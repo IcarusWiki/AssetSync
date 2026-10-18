@@ -388,6 +388,38 @@ class MediaWikiClient:
         if edit_result.get("result") != "Success":
             raise MediaWikiError(f"Edit failed for {page_title}: {edit_result}")
 
+    def move_page(self, from_title: str, to_title: str, reason: str, *, leave_redirect: bool = True) -> None:
+        if not self.csrf_token:
+            raise MediaWikiError("Cannot move wiki page before calling login().")
+
+        payload = {
+            "action": "move",
+            "from": from_title,
+            "to": to_title,
+            "reason": reason,
+            "movetalk": "1",
+            "bot": "1",
+            "maxlag": MAXLAG_SECONDS,
+            "token": self.csrf_token,
+        }
+        if not leave_redirect:
+            payload["noredirect"] = "1"
+
+        move_data = self._perform_write_request(
+            lambda: urllib.request.Request(
+                self.api_url,
+                data=urllib.parse.urlencode(payload).encode("utf-8"),
+                headers={
+                    "Accept": "application/json",
+                    "User-Agent": self.user_agent,
+                },
+                method="POST",
+            ),
+            error_context=f"Move {from_title} -> {to_title}",
+        )
+        if "move" not in move_data:
+            raise MediaWikiError(f"Move failed for {from_title}: {move_data}")
+
     def upload_file(
         self,
         filename: str,
