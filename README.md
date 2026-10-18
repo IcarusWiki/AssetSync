@@ -27,9 +27,12 @@ AssetSync
   - `ITEM_` for every `D_Itemable` row (keeps `{{Item icon}}` working);
   - `ACH_` for every Steam achievement in `D_Accolades`, e.g. `ACH_Survival 101.png` → `T_ACH_1_Survival101_Complete.png`.
     Ribbons and medals are excluded.
+  - `CRE_` for every bestiary creature (`Module:Link icon`): its vestige (the `<Name> Vestige` item, or the one
+    trophy its creatures drop), else the bestiary image. A group whose creatures drop several vestiges (Chicken,
+    Dog, …) gets the bestiary image plus a review entry, so the module can be given an override.
 
   Renamed items get a new redirect, and the old one is kept. An existing page set up differently by an editor is never
-  overwritten. An `ACH_` redirect whose texture isn't on the wiki yet goes to the review issue instead
+  overwritten. An `ACH_`/`CRE_` redirect whose texture isn't on the wiki yet goes to the review issue instead
   (`ledger/redirect_review.json` remembers what was already reported).
 
 New file pages use `== Licensing ==`, `{{License|game}}` and `[[Category:Assets/2DArt/UI/<folder>]]`.
