@@ -163,6 +163,76 @@ def test_achievement_redirects_only_steam_achievements_with_synced_targets():
     assert found.review == {"ACH_Brand New.png": ["T_ACH_New.png"]}
 
 
+def _loc(text):
+    return f'NSLOCTEXT("t", "k", "{text}")'
+
+
+def _creature_tables():
+    ui = "Assets/2DArt/UI"
+
+    def icon(path):
+        return f"/Game/{ui}/{path}.{path.rsplit('/', 1)[-1]}"
+
+    heads = {  # trophy row -> (vestige display name, icon)
+        "Wolf_Head": ("Wolf Vestige", "Items/ITEM_Wolf_Head"),
+        "Alphawolf_Head": ("Black Wolf Vestige", "Items/ITEM_AlphaWolf_Head"),
+        "Boar_Head": ("Wild Boar Vestige", "Items/T_ITEM_WildBoar_Head"),
+        "Hen_Head": ("Red Chicken Vestige", "Items/T_ITEM_Chicken_Head"),
+        "Rooster_Head": ("Rooster Vestige", "Items/T_ITEM_Rooster_Head"),
+        "New_Head": ("Newbie Vestige", "Items/T_ITEM_New_Head"),
+    }
+    bestiary = [  # row, creature name, bestiary image, AI setups (trophy rows)
+        ("Forest_Wolf", "Wolf", "T_Bestiary_Wolf", ["Wolf_Head", "Wolf_Head"]),
+        ("Alpha_Wolf_Boss", "Black Wolf", "T_Bestiary_AlphaWolf", ["AlphaWolf_Head", "Wolf_Head"]),
+        ("Wild_Boar", "Boar", "T_Bestiary_WildBoar", ["Boar_Head"]),
+        ("Chicken", "Chicken", "T_Bestiary_Chickens", ["Hen_Head", "Rooster_Head"]),
+        ("Bee", "Bee", "T_Bestiary_Bees", []),
+        ("Newbie", "Newbie", "T_Bestiary_New", ["New_Head"]),
+    ]
+    return {
+        "Traits/D_Itemable": {"Defaults": {"Icon": "None"}, "Rows": [
+            {"Name": f"Item_{row}", "DisplayName": _loc(name), "Icon": icon(path)}
+            for row, (name, path) in heads.items()]},
+        "Items/D_ItemsStatic": {"Rows": [
+            {"Name": row, "Itemable": {"RowName": f"Item_{row}"}} for row in heads]},
+        "Items/D_ItemTemplate": {"Rows": [
+            {"Name": row, "ItemStaticData": {"RowName": row}} for row in heads]},
+        "Items/D_ItemRewards": {"Rows": [
+            {"Name": row, "Rewards": [{"Item": {"RowName": row}}]} for row in heads]},
+        "Bestiary/D_BestiaryData": {"Defaults": {"Image": "None"}, "Rows": [
+            {"Name": row, "CreatureName": _loc(name), "Image": icon(f"FieldGuide/Creatures/{img}")}
+            for row, name, img, _ in bestiary]},
+        "AI/D_AISetup": {"Rows": [
+            {"Name": f"{row}_{i}", "BestiaryGroup": {"RowName": row}, "Trophy": {"RowName": trophy}}
+            for row, _, _, trophies in bestiary for i, trophy in enumerate(trophies)]},
+    }
+
+
+def test_creature_redirects_prefer_vestige_then_bestiary_image():
+    from assetsync.redirects import creature_redirects
+
+    tables = _creature_tables()
+    synced = {
+        f"Assets/2DArt/UI/{p}" for p in (
+            "Items/ITEM_Wolf_Head", "Items/ITEM_AlphaWolf_Head", "Items/T_ITEM_WildBoar_Head",
+            "Items/T_ITEM_Chicken_Head", "Items/T_ITEM_Rooster_Head",
+            "FieldGuide/Creatures/T_Bestiary_Wolf", "FieldGuide/Creatures/T_Bestiary_Chickens",
+            "FieldGuide/Creatures/T_Bestiary_Bees", "FieldGuide/Creatures/T_Bestiary_New",
+        )
+    }
+    found = creature_redirects(tables, synced)
+    assert found.wanted == {
+        "CRE_Wolf.png": "ITEM_Wolf_Head.png",                # exact "<name> Vestige"
+        "CRE_Black Wolf.png": "ITEM_AlphaWolf_Head.png",     # exact name beats the mixed trophy chain
+        "CRE_Boar.png": "T_ITEM_WildBoar_Head.png",          # only vestige the group drops (case-insensitive rows)
+        "CRE_Chicken.png": "T_Bestiary_Chickens.png",        # several vestiges: basic redirect...
+        "CRE_Bee.png": "T_Bestiary_Bees.png",                # no vestige at all
+        "CRE_Newbie.png": "T_Bestiary_New.png",              # vestige not on the wiki yet
+    }
+    # ...and the ambiguous group goes to review for a Module:Link icon override.
+    assert found.review == {"CRE_Chicken.png": ["T_ITEM_Chicken_Head.png", "T_ITEM_Rooster_Head.png"]}
+
+
 def test_review_is_reported_once_unless_candidates_change():
     from assetsync.redirects import new_reviews
 
