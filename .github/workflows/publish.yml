@@ -79,11 +79,11 @@ jobs:
             git commit -m "Publish assets ($(date -u +%Y-%m-%d)) [skip ci]"
             git push
           fi
-      - name: Open review issue for new textures
+      - name: Open review issue for new textures and redirects
         if: hashFiles('review.md') != ''
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh issue create \
-            --title "New textures to review ($(date -u +%Y-%m-%d))" \
+            --title "AssetSync review ($(date -u +%Y-%m-%d))" \
             --body-file review.md

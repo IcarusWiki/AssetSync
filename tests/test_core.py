@@ -135,6 +135,42 @@ def test_wanted_redirects_skip_identity_and_report_conflicts():
     assert found.conflicts == {"ITEM_One-Shot Pistol.png": ["ITEM_Other.png", "ITEM_Pistol_Handgun.png"]}
 
 
+ACH = "Assets/2DArt/UI/Accolades/Achievements/T_ACH_1_Survival101_Complete"
+ACCOLADES = {
+    "Defaults": {"DisplayName": "", "Icon": "None", "SteamAchievementId": "None"},
+    "Rows": [
+        {"Name": "PickupBasicResource",
+         "DisplayName": 'NSLOCTEXT("D_Accolades", "k", "Survival 101")',
+         "Icon": f"/Game/{ACH}.T_ACH_1_Survival101_Complete",
+         "SteamAchievementId": "ACH_PickupBasicResource"},
+        {"Name": "ForestScanComplete",
+         "DisplayName": 'NSLOCTEXT("D_Accolades", "k", "Forest Scanner")',
+         "Icon": "/Game/Assets/2DArt/UI/Accolades/Ribbons/ribbon-forestscanner.ribbon-forestscanner"},
+        {"Name": "NotUploaded",
+         "DisplayName": 'NSLOCTEXT("D_Accolades", "k", "Brand New")',
+         "Icon": "/Game/Assets/2DArt/UI/Accolades/Achievements/T_ACH_New.T_ACH_New",
+         "SteamAchievementId": "ACH_New"},
+    ],
+}
+
+
+def test_achievement_redirects_only_steam_achievements_with_synced_targets():
+    from assetsync.redirects import achievement_redirects
+
+    found = achievement_redirects(ACCOLADES, synced={ACH})
+    assert found.wanted == {"ACH_Survival 101.png": "T_ACH_1_Survival101_Complete.png"}
+    # The ribbon is not an achievement; the new achievement's icon isn't on the wiki yet.
+    assert found.review == {"ACH_Brand New.png": ["T_ACH_New.png"]}
+
+
+def test_review_is_reported_once_unless_candidates_change():
+    from assetsync.redirects import new_reviews
+
+    review = {"ACH_A.png": ["T_A.png"], "CRE_B.png": ["X.png", "Y.png"]}
+    reported = {"ACH_A.png": ["T_A.png"], "CRE_B.png": ["X.png"]}
+    assert new_reviews(review, reported) == {"CRE_B.png": ["X.png", "Y.png"]}
+
+
 def test_plan_redirects_keeps_old_names_and_matches_mediawiki_titles():
     known = {"ITEM_One-Shot_Pistol.png": "ITEM_Pistol_Handgun.png", "ITEM_Old Name.png": "ITEM_X.png"}
     wanted = {"ITEM_One-Shot Pistol.png": "ITEM_Pistol_Handgun.png", "ITEM_New Name.png": "ITEM_X.png",
