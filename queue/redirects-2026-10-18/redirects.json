@@ -1,0 +1,760 @@
+{
+ "create": [
+  {
+   "redirect": "ACH_... The Harder They Fall.png",
+   "target": "T_ACH_1_TheHarderTheyFall_Complete.png"
+  },
+  {
+   "redirect": "ACH_3-Eyed Fish.png",
+   "target": "T_ACH_ThreeEyedFish.png"
+  },
+  {
+   "redirect": "ACH_A Gift of Fire.png",
+   "target": "T_ACH_A_Gift_of_Fire_complete.png"
+  },
+  {
+   "redirect": "ACH_AWOL.png",
+   "target": "T_ACH_AWOL_complete.png"
+  },
+  {
+   "redirect": "ACH_Advanced Technology.png",
+   "target": "T_ACH_Advanced_Technology.png"
+  },
+  {
+   "redirect": "ACH_And You Are?.png",
+   "target": "T_ACH_AndYouAre.png"
+  },
+  {
+   "redirect": "ACH_Ape-x Predator.png",
+   "target": "T_ACH_Ape-xPredator_Complete.png"
+  },
+  {
+   "redirect": "ACH_Armored and Dangerous.png",
+   "target": "T_ACH_1_ArmouredAndDangerous_Complete.png"
+  },
+  {
+   "redirect": "ACH_At All Costs.png",
+   "target": "T_ACH_AtAllCosts.png"
+  },
+  {
+   "redirect": "ACH_At least it never hits the same place twice....png",
+   "target": "T_ACH_1_Lightning1_Complete.png"
+  },
+  {
+   "redirect": "ACH_Baby Steps.png",
+   "target": "T_ACH_1_BabySteps_Complete.png"
+  },
+  {
+   "redirect": "ACH_Back to Square One.png",
+   "target": "T_ACH_Back_to_Square_One_complete.png"
+  },
+  {
+   "redirect": "ACH_Barking Up the Right Tree.png",
+   "target": "T_ACH_Barking_Up_the_Right_Tree_complete.png"
+  },
+  {
+   "redirect": "ACH_Bear Hands.png",
+   "target": "T_ACH_Drop_Bear_Hands_complete.png"
+  },
+  {
+   "redirect": "ACH_Bear Necessities.png",
+   "target": "T_ACH_1_BearNecessities_Complete.png"
+  },
+  {
+   "redirect": "ACH_Bench Enthusiast.png",
+   "target": "T_ACH_1_BenchEnthusiast_Complete.png"
+  },
+  {
+   "redirect": "ACH_Biochemical Warfare.png",
+   "target": "T_ACH_BiochemicalWarfare.png"
+  },
+  {
+   "redirect": "ACH_Biome is Where The Heart Is.png",
+   "target": "T_ACH_1_BiomeisWheretheHeartIs_Complete.png"
+  },
+  {
+   "redirect": "ACH_Blocked!.png",
+   "target": "T_ACH_Blocked_complete.png"
+  },
+  {
+   "redirect": "ACH_Buck and Cover.png",
+   "target": "T_ACH_1_BuckandCover_Complete.png"
+  },
+  {
+   "redirect": "ACH_Burn Notice.png",
+   "target": "T_ACH_BurnNotice.png"
+  },
+  {
+   "redirect": "ACH_Calm Before the Storm.png",
+   "target": "T_ACH_Calm_before_the_Storm_complete.png"
+  },
+  {
+   "redirect": "ACH_Cat-astrophy Averted.png",
+   "target": "T_ACH_Cat-astrophy_Averted_complete.png"
+  },
+  {
+   "redirect": "ACH_Cha-Ching!.png",
+   "target": "T_ACH_1_Oremageddon_Complete.png"
+  },
+  {
+   "redirect": "ACH_Cock-a-Doodle-Doom.png",
+   "target": "T_ACH_Cock-a-Doodle-Doom_complete.png"
+  },
+  {
+   "redirect": "ACH_Cold-Blooded.png",
+   "target": "T_ACH_ColdBlooded_complete.png"
+  },
+  {
+   "redirect": "ACH_Colossus Collapse.png",
+   "target": "T_ACH_CollosusCollapse_complete.png"
+  },
+  {
+   "redirect": "ACH_Crude Awakening.png",
+   "target": "T_ACH_CrudeAwakening.png"
+  },
+  {
+   "redirect": "ACH_Crushing It.png",
+   "target": "T_ACH_Crushing_it_complete.png"
+  },
+  {
+   "redirect": "ACH_Deceit.png",
+   "target": "T_ACH_Deceit.png"
+  },
+  {
+   "redirect": "ACH_Drill, Baby, Drill.png",
+   "target": "T_ACH_Drillbabydrill.png"
+  },
+  {
+   "redirect": "ACH_Dude, Where's my Map?.png",
+   "target": "T_ACH_Dude__where_s_my_Map_complete.png"
+  },
+  {
+   "redirect": "ACH_Easy Tiger.png",
+   "target": "T_ACH_Easy_Tiger_complete.png"
+  },
+  {
+   "redirect": "ACH_Encrypted.png",
+   "target": "T_ACH_Encrypted.png"
+  },
+  {
+   "redirect": "ACH_Enzymic Mutation.png",
+   "target": "T_ACH_Enzymic_Mutation_complete.png"
+  },
+  {
+   "redirect": "ACH_Ex-Box.png",
+   "target": "T_ACH_1_Ex-Box_Complete.png"
+  },
+  {
+   "redirect": "ACH_Eyes On Me.png",
+   "target": "T_ACH_Eyes_On_Me.png"
+  },
+  {
+   "redirect": "ACH_Fault Line.png",
+   "target": "T_ACH_Faultline_complete.png"
+  },
+  {
+   "redirect": "ACH_Faultless Victory.png",
+   "target": "T_ACH_FaultlessVictory_complete.png"
+  },
+  {
+   "redirect": "ACH_Fired Up.png",
+   "target": "T_ACH_1_FiredUp_Complete.png"
+  },
+  {
+   "redirect": "ACH_Flesh and Circuitry.png",
+   "target": "T_ACH_FleshandCircuitry_complete.png"
+  },
+  {
+   "redirect": "ACH_For Mo.png",
+   "target": "T_ACH_ForMo.png"
+  },
+  {
+   "redirect": "ACH_Friendly Fire.png",
+   "target": "T_ACH_1_FriendlyFire_Complete.png"
+  },
+  {
+   "redirect": "ACH_Fur Baby.png",
+   "target": "T_ACH_Fur_Baby_complete.png"
+  },
+  {
+   "redirect": "ACH_Future Oil Baron.png",
+   "target": "T_ACH_FutureOilBaron.png"
+  },
+  {
+   "redirect": "ACH_Ghosted.png",
+   "target": "T_ACH_Ghosted.png"
+  },
+  {
+   "redirect": "ACH_Gimme Gimme Gimme.png",
+   "target": "T_ACH_Gimme_Gimme_Gimme_complete.png"
+  },
+  {
+   "redirect": "ACH_Glacial Supremacy.png",
+   "target": "T_ACH_GlacialSupremacy_complete.png"
+  },
+  {
+   "redirect": "ACH_Glow-up.png",
+   "target": "T_ACH_Glow-up.png"
+  },
+  {
+   "redirect": "ACH_Gone Bananas.png",
+   "target": "T_ACH_GoneBananas_complete.png"
+  },
+  {
+   "redirect": "ACH_Gone Fission.png",
+   "target": "T_ACH_GoneFission.png"
+  },
+  {
+   "redirect": "ACH_Gotta Catch Them All II.png",
+   "target": "T_ACH_GottaCatchThemAlllII.png"
+  },
+  {
+   "redirect": "ACH_Gotta Catch Them All.png",
+   "target": "T_ACH_1_GottaCatchEmAll_Complete.png"
+  },
+  {
+   "redirect": "ACH_Graceful Landing.png",
+   "target": "T_ACH_GracefulLanding.png"
+  },
+  {
+   "redirect": "ACH_Habitat Acquired.png",
+   "target": "T_ACH_Habitat_Acquired_complete.png"
+  },
+  {
+   "redirect": "ACH_Handy.png",
+   "target": "T_ACH_Handy.png"
+  },
+  {
+   "redirect": "ACH_Hard Reset.png",
+   "target": "T_ACH_HardReset.png"
+  },
+  {
+   "redirect": "ACH_Harshest of Conditions.png",
+   "target": "T_ACH_Harshest_of_Conditions_complete.png"
+  },
+  {
+   "redirect": "ACH_Hay There, Neigh-bor!.png",
+   "target": "T_ACH_Hay_There__Neigh-bor__complete.png"
+  },
+  {
+   "redirect": "ACH_Heavy Metal Remix.png",
+   "target": "T_ACH_HeavyMetalRemix.png"
+  },
+  {
+   "redirect": "ACH_Herb Your Enthusiasm.png",
+   "target": "T_ACH_1_HerbYourEnthusiasm_Complete.png"
+  },
+  {
+   "redirect": "ACH_Hero of the Mines.png",
+   "target": "T_ACH_HeroOfTheMines_complete.png"
+  },
+  {
+   "redirect": "ACH_Highly Skilled.png",
+   "target": "T_ACH_1_HighlySkilled_Complete.png"
+  },
+  {
+   "redirect": "ACH_Home Sweet Home.png",
+   "target": "T_ACH_DiscoverEden.png"
+  },
+  {
+   "redirect": "ACH_Hot 'n' Cold.png",
+   "target": "T_ACH_HotnCold_complete.png"
+  },
+  {
+   "redirect": "ACH_Hot-hot-hot-hot-hot!.png",
+   "target": "T_ACH_Hot-hot-hot-hot-hot__complete.png"
+  },
+  {
+   "redirect": "ACH_Industrial Stapling.png",
+   "target": "T_ACH_NailedIt.png"
+  },
+  {
+   "redirect": "ACH_Jelly Baby.png",
+   "target": "T_ACH_Jelly_Baby_complete.png"
+  },
+  {
+   "redirect": "ACH_Jurassic Perks.png",
+   "target": "T_ACH_JurassicPerks.png"
+  },
+  {
+   "redirect": "ACH_Lab Rat.png",
+   "target": "T_ACH_LabRat.png"
+  },
+  {
+   "redirect": "ACH_Leader Of The Pack.png",
+   "target": "T_ACH_1_LeaderOfThePack_Complete.png"
+  },
+  {
+   "redirect": "ACH_Let Them Eat Cake.png",
+   "target": "T_ACH_Let_them_eat_cake_complete.png"
+  },
+  {
+   "redirect": "ACH_Lock, Stock, and Lots of Bears.png",
+   "target": "T_ACH_1_LockStockBears_Complete.png"
+  },
+  {
+   "redirect": "ACH_Makeshift Engineering.png",
+   "target": "T_ACH_1_MakeshiftEngineering_Complete.png"
+  },
+  {
+   "redirect": "ACH_Mass Production.png",
+   "target": "T_ACH_MassProduction.png"
+  },
+  {
+   "redirect": "ACH_Master Angler.png",
+   "target": "T_ACH_1_MasterAngler_Complete.png"
+  },
+  {
+   "redirect": "ACH_Matter Reforged.png",
+   "target": "T_ACH_MatterReforged_complete.png"
+  },
+  {
+   "redirect": "ACH_Medic!.png",
+   "target": "T_ACH_1_Medic_Complete.png"
+  },
+  {
+   "redirect": "ACH_Meltdown.png",
+   "target": "T_ACH_Meltdown_complete.png"
+  },
+  {
+   "redirect": "ACH_Mined Over Matter.png",
+   "target": "T_ACH_1_MinedOverMatter_Complete.png"
+  },
+  {
+   "redirect": "ACH_Money Money Money.png",
+   "target": "T_ACH_1_MoneyMoneyMoney_Complete.png"
+  },
+  {
+   "redirect": "ACH_Mountie.png",
+   "target": "T_ACH_Mountie_complete.png"
+  },
+  {
+   "redirect": "ACH_Mushrooms?.png",
+   "target": "T_ACH_Mushrooms.png"
+  },
+  {
+   "redirect": "ACH_Nailed It.png",
+   "target": "T_ACH_NailedIt_complete.png"
+  },
+  {
+   "redirect": "ACH_Nice Ride.png",
+   "target": "T_ACH_NiceRide.png"
+  },
+  {
+   "redirect": "ACH_Nice to Have Friends.png",
+   "target": "T_ACH_Nice_to_have_friends_complete.png"
+  },
+  {
+   "redirect": "ACH_No Sweat.png",
+   "target": "T_ACH_No_Sweat_complete.png"
+  },
+  {
+   "redirect": "ACH_No Take, Only Throw.png",
+   "target": "T_ACH_No_take__only_throw_complete.png"
+  },
+  {
+   "redirect": "ACH_Not Lost.png",
+   "target": "T_ACH_Not_Lost_complete.png"
+  },
+  {
+   "redirect": "ACH_Not the Bees!.png",
+   "target": "T_ACH_Not_the_Bees__complete.png"
+  },
+  {
+   "redirect": "ACH_Nothing to see Here.png",
+   "target": "T_ACH_NothingToSeeHere_complete.png"
+  },
+  {
+   "redirect": "ACH_Off the Charts.png",
+   "target": "T_ACH_OffTheCharts.png"
+  },
+  {
+   "redirect": "ACH_One Of Us.png",
+   "target": "T_ACH_One_Of_Us_complete.png"
+  },
+  {
+   "redirect": "ACH_One Shot, One Kill.png",
+   "target": "T_ACH_1_OneShotOneKill_Complete.png"
+  },
+  {
+   "redirect": "ACH_Ooze Control.png",
+   "target": "T_ACH_OozeControl_complete.png"
+  },
+  {
+   "redirect": "ACH_Ore-mageddon.png",
+   "target": "T_ACH_1_Oremageddon_Complete.png"
+  },
+  {
+   "redirect": "ACH_Outpost Builder.png",
+   "target": "T_ACH_Outpost_Builder_complete.png"
+  },
+  {
+   "redirect": "ACH_Outpost Veteran.png",
+   "target": "T_ACH_Outpost_Veteran_complete.png"
+  },
+  {
+   "redirect": "ACH_Pack Mule.png",
+   "target": "T_ACH_Pack_Mule.png"
+  },
+  {
+   "redirect": "ACH_Pain in the Bass.png",
+   "target": "T_ACH_1_PainInTheBass_Complete.png"
+  },
+  {
+   "redirect": "ACH_Peak Tech.png",
+   "target": "T_ACH_PeakTech.png"
+  },
+  {
+   "redirect": "ACH_Pew Pew Pew.png",
+   "target": "T_ACH_Pewpew.png"
+  },
+  {
+   "redirect": "ACH_Pew Review.png",
+   "target": "T_ACH_PewReview.png"
+  },
+  {
+   "redirect": "ACH_Pinnacle of his Career.png",
+   "target": "T_ACH_PinnacleofHisCareer.png"
+  },
+  {
+   "redirect": "ACH_Plot Armor.png",
+   "target": "T_ACH_PlotArmor.png"
+  },
+  {
+   "redirect": "ACH_Pony Slaystation.png",
+   "target": "T_ACH_1_PonySlaystation_Complete.png"
+  },
+  {
+   "redirect": "ACH_Poor Hans.png",
+   "target": "T_ACH_Poor_Hans_complete.png"
+  },
+  {
+   "redirect": "ACH_Power Trip.png",
+   "target": "T_ACH_PowerTrip.png"
+  },
+  {
+   "redirect": "ACH_Press F to Pay Respects.png",
+   "target": "T_ACH_Press_F_to_Pay_Respects_complete.png"
+  },
+  {
+   "redirect": "ACH_Professional Chef.png",
+   "target": "T_ACH_Professional_Chef_complete.png"
+  },
+  {
+   "redirect": "ACH_Quiver Me Timbers.png",
+   "target": "T_ACH_1_QuiverMeTimbers_Complete.png"
+  },
+  {
+   "redirect": "ACH_RIP Mr Kitty.png",
+   "target": "T_ACH_RIP_Mr_Kitty_complete.png"
+  },
+  {
+   "redirect": "ACH_Read the Room.png",
+   "target": "T_ACH_ReadTheRoom.png"
+  },
+  {
+   "redirect": "ACH_Ringleader.png",
+   "target": "T_ACH_Ringleader_complete.png"
+  },
+  {
+   "redirect": "ACH_Rock 'n' Roll.png",
+   "target": "T_ACH_1_RockNRoll_Complete.png"
+  },
+  {
+   "redirect": "ACH_Rock Out.png",
+   "target": "T_ACH_Jackhammer.png"
+  },
+  {
+   "redirect": "ACH_Rock Solid.png",
+   "target": "T_ACH_RockSolid.png"
+  },
+  {
+   "redirect": "ACH_Rock and a Hard Place.png",
+   "target": "T_ACH_RockandaHardPlace_complete.png"
+  },
+  {
+   "redirect": "ACH_Royal Decree.png",
+   "target": "T_ACH_RoyalDecree.png"
+  },
+  {
+   "redirect": "ACH_Saw It Coming.png",
+   "target": "T_ACH_SawitComing.png"
+  },
+  {
+   "redirect": "ACH_Serene Stench.png",
+   "target": "T_ACH_NewHorizons.png"
+  },
+  {
+   "redirect": "ACH_Shocking.png",
+   "target": "T_ACH_Shocking_complete.png"
+  },
+  {
+   "redirect": "ACH_Sic 'em!.png",
+   "target": "T_ACH_Sic__em_complete.png"
+  },
+  {
+   "redirect": "ACH_Signal Jammed.png",
+   "target": "T_ACH_Signal_Jammed_complete.png"
+  },
+  {
+   "redirect": "ACH_Skulking Around.png",
+   "target": "T_ACH_Skulking_Around.png"
+  },
+  {
+   "redirect": "ACH_Slinky.png",
+   "target": "T_ACH_Slinky.png"
+  },
+  {
+   "redirect": "ACH_Snow Problem.png",
+   "target": "T_ACH_Snow_Problem_complete.png"
+  },
+  {
+   "redirect": "ACH_So Comfy, Can't Move.png",
+   "target": "T_ACH_So_Comfy__Cant_Move_complete.png"
+  },
+  {
+   "redirect": "ACH_So Cool.png",
+   "target": "T_ACH_SoCool.png"
+  },
+  {
+   "redirect": "ACH_Soft Landing.png",
+   "target": "T_ACH_Soft_Landing_complete.png"
+  },
+  {
+   "redirect": "ACH_Sometimes it does....png",
+   "target": "T_ACH_1_Lightning2_Complete.png"
+  },
+  {
+   "redirect": "ACH_Starstruck.png",
+   "target": "T_ACH_Starstruck_complete.png"
+  },
+  {
+   "redirect": "ACH_Still Not Lost.png",
+   "target": "T_ACH_Still_Not_Lost_complete.png"
+  },
+  {
+   "redirect": "ACH_Sting Operation.png",
+   "target": "T_ACH_1_StingOperation_Complete.png"
+  },
+  {
+   "redirect": "ACH_Styx And Stones.png",
+   "target": "T_ACH_1_StyxAndStones_Complete.png"
+  },
+  {
+   "redirect": "ACH_Suited Up.png",
+   "target": "T_ACH_Suited_Up_complete.png"
+  },
+  {
+   "redirect": "ACH_Survival 101.png",
+   "target": "T_ACH_1_Survival101_Complete.png"
+  },
+  {
+   "redirect": "ACH_Thanks, Buddy.png",
+   "target": "T_ACH_Thanks__Buddy_complete.png"
+  },
+  {
+   "redirect": "ACH_That Was Close.png",
+   "target": "T_ACH_That_Was_Close_complete.png"
+  },
+  {
+   "redirect": "ACH_The Better Option?.png",
+   "target": "T_ACH_TheBetterOption.png"
+  },
+  {
+   "redirect": "ACH_The Bigger They Are....png",
+   "target": "T_ACH_1_TheBiggerTheyAre_Complete.png"
+  },
+  {
+   "redirect": "ACH_The Bodyguard.png",
+   "target": "T_ACH_The_Bodyguard_complete.png"
+  },
+  {
+   "redirect": "ACH_The Eris Inquisition.png",
+   "target": "T_ACH_ErisInquisition.png"
+  },
+  {
+   "redirect": "ACH_The Most Important Meal of the Day.png",
+   "target": "T_ACH_The_Most_Important_Meal_of_the_Day_complete.png"
+  },
+  {
+   "redirect": "ACH_The People's Syndicate.png",
+   "target": "T_ACH_ThePeoplesSyndicate.png"
+  },
+  {
+   "redirect": "ACH_Thermonuclear.png",
+   "target": "T_ACH_Thermonucleur.png"
+  },
+  {
+   "redirect": "ACH_Too Hot to Handle.png",
+   "target": "T_ACH_TooHotToHandle_complete.png"
+  },
+  {
+   "redirect": "ACH_Tusks to Dust.png",
+   "target": "T_ACH_TuskToDust_complete.png"
+  },
+  {
+   "redirect": "ACH_UDA Veteran.png",
+   "target": "T_ACH_UDA_Veteran_complete.png"
+  },
+  {
+   "redirect": "ACH_Unknown Caller.png",
+   "target": "T_ACH_Unknown_Caller_complete.png"
+  },
+  {
+   "redirect": "ACH_Unlocked And Loaded.png",
+   "target": "T_ACH_1_UnlockedandLoaded_Complete.png"
+  },
+  {
+   "redirect": "ACH_Unlocking Intensifies.png",
+   "target": "T_ACH_1_UnlockingIntensifies_Complete.png"
+  },
+  {
+   "redirect": "ACH_Veteran Prospector.png",
+   "target": "T_ACH_1_VeteraNProspector_Complete.png"
+  },
+  {
+   "redirect": "ACH_Watch Your Step.png",
+   "target": "T_ACH_Watch_your_step_complete.png"
+  },
+  {
+   "redirect": "ACH_Weaponized Perfection.png",
+   "target": "T_ACH_WeaponizedPerfection_complete.png"
+  },
+  {
+   "redirect": "ACH_Welcome to Icarus.png",
+   "target": "T_ACH_1_WelcomeToIcarus_Complete.png"
+  },
+  {
+   "redirect": "ACH_Whack-A-Mole.png",
+   "target": "T_ACH_1_WhackAMole_Complete.png"
+  },
+  {
+   "redirect": "ACH_What Experiment?.png",
+   "target": "T_ACH_WhatExperiment_complete.png"
+  },
+  {
+   "redirect": "ACH_What Fall Damage?.png",
+   "target": "T_ACH_What_Fall_Damage_complete.png"
+  },
+  {
+   "redirect": "ACH_What is That?.png",
+   "target": "T_ACH_What_is_that_complete.png"
+  },
+  {
+   "redirect": "ACH_What is this place?.png",
+   "target": "T_ACH_What_is_this_place_complete.png"
+  },
+  {
+   "redirect": "ACH_Who Wore It Better?.png",
+   "target": "T_ACH_Who_Wore_It_Better_complete.png"
+  },
+  {
+   "redirect": "ACH_Whoops!.png",
+   "target": "T_ACH_1_Whoops_Complete.png"
+  },
+  {
+   "redirect": "ACH_Wyrm Reaper.png",
+   "target": "T_ACH_WyrmReaper.png"
+  },
+  {
+   "redirect": "ACH_Yes Chef!.png",
+   "target": "T_ACH_1_YesChef_Complete.png"
+  },
+  {
+   "redirect": "ACH_You Can't See Me.png",
+   "target": "T_ACH_You_Can_t_See_Me_complete.png"
+  },
+  {
+   "redirect": "ACH_You Ever Wonder Why We're Here?.png",
+   "target": "T_ACH_You_Ever_Wonder_Why_Were_Here_complete.png"
+  },
+  {
+   "redirect": "ACH_You Monster.png",
+   "target": "T_ACH_YouMonster_Complete.png"
+  },
+  {
+   "redirect": "ACH_You're Glowing....png",
+   "target": "T_ACH_YoureGlowing.png"
+  },
+  {
+   "redirect": "ACH_Your Own Worst Enemy.png",
+   "target": "T_ACH_Your_Own_Worst_Enemy_complete.png"
+  },
+  {
+   "redirect": "ACH_Zero To Hero.png",
+   "target": "T_ACH_1_ZeroToHero_Complete.png"
+  }
+ ],
+ "retarget": [],
+ "conflicts": {
+  "ITEM_Clipboard.png": [
+   "T_ITEM_Prop_Clipboard_A.png",
+   "T_ITEM_Prop_Clipboard_G.png"
+  ],
+  "ITEM_Concrete Furnace.png": [
+   "ITEM_Concrete_Furnace_V2.png",
+   "ITEM_Kit_Concrete_Furnace.png"
+  ],
+  "ITEM_Device Component.png": [
+   "ITEM_FactionMission_Tech1.png",
+   "ITEM_FactionMission_Tech2.png",
+   "ITEM_FactionMission_Tech3.png"
+  ],
+  "ITEM_Electric Furnace.png": [
+   "ITEM_Electric_Furnace_Large.png",
+   "ITEM_Kit_Electric_Furnace.png"
+  ],
+  "ITEM_Foundry.png": [
+   "T_ITEM_Anvil_Bench_T4.png",
+   "T_ITEM_Anvil_Bench_T4_v2.png"
+  ],
+  "ITEM_Honey Tea.png": [
+   "ITEM_Thermos.png",
+   "T_ITEM_DRINK_Honey.png"
+  ],
+  "ITEM_Hot Cocoa.png": [
+   "ITEM_Thermos.png",
+   "T_ITEM_DRINK_Cocoa.png"
+  ],
+  "ITEM_Ice Water.png": [
+   "ITEM_Thermos.png",
+   "T_ITEM_DRINK_Ice.png"
+  ],
+  "ITEM_Laptop.png": [
+   "T_ITEM_Collectable_Laptop.png",
+   "T_ITEM_Prop_Laptop_A.png"
+  ],
+  "ITEM_Purified Water.png": [
+   "T_ITEM_DRINK_PurificationPill.png",
+   "T_ITEM_DRINK_XigoPuri.png"
+  ],
+  "ITEM_Unknown component.png": [
+   "ITEM_Mission_HighTech_1.png",
+   "ITEM_Mission_HighTech_2.png",
+   "ITEM_Mission_HighTech_3.png"
+  ],
+  "ITEM_Water.png": [
+   "Icon_RecipeWater.png",
+   "T_ITEM_DRINK_Water.png"
+  ]
+ },
+ "skipped": [
+  "Item_Ashlands_Bunker_Note_1: Ruaumoko Bunker - Note #1",
+  "Item_Ashlands_Bunker_Note_2: Ruaumoko Bunker - Note #2",
+  "Item_Ashlands_Bunker_Note_3: Ruaumoko Bunker - Note #3",
+  "Item_Icesheet_Outpost_Note_1: Icesheet Outpost - Note #1",
+  "Item_Icesheet_Outpost_Note_2: Icesheet Outpost - Note #2",
+  "Item_Icesheet_Outpost_Note_3: Icesheet Outpost - Note #3",
+  "Item_Icesheet_Cave_Note_1: Icesheet Cave - Note #1",
+  "Item_Icesheet_Cave_Note_2: Icesheet Cave - Note #2",
+  "Item_Icesheet_Cave_Note_3: Icesheet Cave - Note #3",
+  "Item_GH_RG_MiningCamp_1: Olympus Mining Site Alpha - Scribbled Note #1",
+  "Item_GH_RG_MiningCamp_2: Olympus Mining Site Alpha - Scribbled Note #2",
+  "Mission_ELY5_note_1: Mo's Journal Entry #1",
+  "Mission_ELY5_note_2: Mo's Journal Entry #2",
+  "Mission_ELY5_note_3: Mo's Journal Entry #3",
+  "Mission_ELY5_note_4: Mo's Journal Entry #4",
+  "Mission_ELY5_note_5: Mo's Journal Entry #5"
+ ],
+ "review": {}
+}
