@@ -1,0 +1,89 @@
+name: Publish assets
+
+# Runs when the Data pipeline's finalizer (or the redirects workflow) queues work.
+# The dry run is always visible in the job summary; the live job waits for a reviewer
+# on the "wiki-live" environment before touching the wiki.
+
+on:
+  push:
+    branches: [main]
+    paths: ["queue/**"]
+  workflow_call:
+  workflow_dispatch:
+
+concurrency:
+  group: publish-assets
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  dry-run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      has_work: ${{ steps.dry.outputs.has_work }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: pip install .
+      - name: Dry run
+        id: dry
+        run: |
+          python -m assetsync publish | tee dry-run.txt
+          if grep -q "Queue is empty" dry-run.txt; then
+            echo "has_work=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_work=true" >> "$GITHUB_OUTPUT"
+          fi
+          {
+            for report in queue/*/REPORT.md; do [ -f "$report" ] && cat "$report" && echo; done
+            echo '## Planned edits'
+            echo '```'
+            cat dry-run.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  publish:
+    needs: dry-run
+    if: needs.dry-run.outputs.has_work == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    environment: wiki-live
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: pip install .
+      - name: Publish to icarus.wiki.gg
+        env:
+          WIKIGG_USERNAME: ${{ secrets.WIKIGG_BOT_USERNAME }}
+          WIKIGG_APP_PASSWORD: ${{ secrets.WIKIGG_BOT_APP_PASSWORD }}
+        run: python -m assetsync publish --live --review-out review.md
+      - name: Commit ledger
+        if: always()
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add -A ledger queue
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish assets ($(date -u +%Y-%m-%d)) [skip ci]"
+            git push
+          fi
+      - name: Open review issue for new textures
+        if: hashFiles('review.md') != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create \
+            --title "New textures to review ($(date -u +%Y-%m-%d))" \
+            --body-file review.md

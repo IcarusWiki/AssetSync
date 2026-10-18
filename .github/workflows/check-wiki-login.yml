@@ -1,0 +1,48 @@
+name: Check wiki login
+
+# Manual sanity check that the bot secrets work and the account has the rights publishing needs.
+# Read-only: logs in and queries the account's own groups and rights.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: pip install .
+      - name: Log in and report rights
+        env:
+          WIKIGG_USERNAME: ${{ secrets.WIKIGG_BOT_USERNAME }}
+          WIKIGG_APP_PASSWORD: ${{ secrets.WIKIGG_BOT_APP_PASSWORD }}
+        run: |
+          python - <<'EOF'
+          import os, sys
+          from assetsync.cli import API_URL, USER_AGENT
+          from assetsync.wiki import MediaWikiClient
+
+          client = MediaWikiClient(API_URL, user_agent=USER_AGENT,
+                                   username=os.environ["WIKIGG_USERNAME"],
+                                   password=os.environ["WIKIGG_APP_PASSWORD"])
+          client.login()
+          info = client.request({"action": "query", "meta": "userinfo",
+                                 "uiprop": "groups|rights|ratelimits"}, post=False)["query"]["userinfo"]
+          rights = set(info.get("rights", []))
+          needed = ["edit", "createpage", "upload", "reupload", "reupload-own", "bot"]
+          print(f"Logged in as: {info['name']}")
+          print(f"Groups: {', '.join(info.get('groups', []))}")
+          for right in needed:
+              print(f"  {'OK     ' if right in rights else 'MISSING'} {right}")
+          print(f"  {'yes' if 'noratelimit' in rights else 'no '} noratelimit")
+          print(f"  {'yes' if 'apihighlimits' in rights else 'no '} apihighlimits")
+          missing = [r for r in needed if r not in rights and r != "reupload-own"]
+          sys.exit(f"Missing rights: {missing}" if missing else 0)
+          EOF

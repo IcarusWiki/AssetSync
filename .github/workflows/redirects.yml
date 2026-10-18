@@ -1,0 +1,62 @@
+name: Display-name redirects
+
+# IcarusWiki/Data dispatches "icarus-updated" whenever InGameFiles changes. Item display
+# names live there, so this is when new ITEM_<DisplayName>.png redirects may be needed.
+
+on:
+  repository_dispatch:
+    types: [icarus-updated]
+  workflow_dispatch:
+
+concurrency:
+  # Not "publish-assets": the called publish workflow holds that group, and sharing it would deadlock.
+  group: plan-redirects
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - name: Checkout game data
+        uses: actions/checkout@v6
+        with:
+          repository: IcarusWiki/Data
+          ref: ${{ github.event.client_payload.sha || 'main' }}
+          path: Data
+          sparse-checkout: InGameFiles/Traits
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: pip install .
+      - name: Queue redirect changes
+        run: |
+          python -m assetsync redirects --data-root Data/InGameFiles --build "redirects-$(date -u +%Y-%m-%d)"
+          # Nothing to create or retarget means nothing to publish.
+          python - <<'EOF'
+          import json, pathlib, shutil
+          for plan in pathlib.Path("queue").glob("redirects-*/redirects.json"):
+              data = json.loads(plan.read_text(encoding="utf-8"))
+              if not data["create"] and not data["retarget"] and not any(plan.parent.glob("plan.json")):
+                  shutil.rmtree(plan.parent)
+          EOF
+      - name: Commit queue
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add -A queue
+          if ! git diff --cached --quiet; then
+            git commit -m "Queue display-name redirects ($(date -u +%Y-%m-%d))"
+            git push
+          fi
+
+  publish:
+    # Pushes made with GITHUB_TOKEN don't trigger other workflows, so call it directly.
+    needs: plan
+    uses: ./.github/workflows/publish.yml
+    secrets: inherit
