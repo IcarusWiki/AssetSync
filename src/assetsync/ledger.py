@@ -52,8 +52,7 @@ class Ledger:
 
         def write(name: str, data: dict) -> None:
             text = json.dumps(data, indent=1, sort_keys=True, ensure_ascii=False) + "\n"
-            (root / name).write_text(text, encoding="utf-8", newline="
-")
+            (root / name).write_text(text, encoding="utf-8", newline="\n")
 
         write("textures.json", {k: asdict(v) for k, v in self.textures.items()})
         write("redirects.json", self.redirects)
