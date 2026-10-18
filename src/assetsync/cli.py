@@ -16,12 +16,20 @@ import os
 import re
 import shutil
 import sys
+import time
 from pathlib import Path
 
 from . import ledger as L
 from .export import export_textures, hash_exports
-from .filepage import mark_historical, new_file_page, redirect_page
-from .redirects import load_itemable, plan_redirects, wanted_redirects
+from .filepage import mark_historical, new_file_page, redirect_page, redirect_target
+from .redirects import (
+    KEEP,
+    WRITE,
+    load_itemable,
+    plan_redirects,
+    redirect_action,
+    wanted_redirects,
+)
 from .wiki import MediaWikiClient, MediaWikiError
 
 # Finalizers run from the Data workspace; it tells us where this repo is checked out.
@@ -239,9 +247,14 @@ def publish_batch(batch: Path, ledger: L.Ledger, client: MediaWikiClient | None,
     if redirects_path.exists():
         plan = json.loads(redirects_path.read_text(encoding="utf-8"))
         summary = "Automated display-name redirect for {{Item icon}}"
+        reader = client or MediaWikiClient(API_URL, user_agent=USER_AGENT)
         for item in plan["create"] + plan["retarget"]:
             title = f"File:{item['redirect']}"
-            if act(
+            page = reader.fetch_page(title)
+            decision = redirect_action(page.exists, redirect_target(page.text), item)
+            if decision == KEEP:
+                print(f"keep {title}: already exists and was set up differently by an editor")
+            elif decision == WRITE and not act(
                 f"redirect {title} -> File:{item['target']}",
                 client and client.edit_page,
                 title,
@@ -249,7 +262,11 @@ def publish_batch(batch: Path, ledger: L.Ledger, client: MediaWikiClient | None,
                 summary,
                 nocreate=False,
             ):
-                ledger.redirects[item["redirect"]] = item["target"]
+                continue
+            # Remember the game's target even when an editor's choice is kept, so it isn't re-planned.
+            ledger.redirects[item["redirect"]] = item["target"]
+            if not client:
+                time.sleep(0.2)  # anonymous dry-run reads: stay polite
     return failures
 
 

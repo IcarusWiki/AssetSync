@@ -88,5 +88,24 @@ def plan_redirects(known: dict[str, str], wanted: dict[str, str]) -> dict[str, l
     return {"create": create, "retarget": retarget}
 
 
+WRITE, DONE, KEEP = "write", "done", "keep"
+
+
+def redirect_action(exists: bool, current_target: str | None, item: dict) -> str:
+    """Decide whether writing a planned redirect is safe.
+
+    Only a missing page, or a redirect still pointing where this tool last pointed it, is
+    written. Anything an editor set up differently (another target, or a real file) is kept.
+    """
+    if not exists:
+        return WRITE
+    if current_target and normalize_title(current_target) == normalize_title(item["target"]):
+        return DONE
+    previous = item.get("previous")
+    if current_target and previous and normalize_title(current_target) == normalize_title(previous):
+        return WRITE
+    return KEEP
+
+
 def load_itemable(data_root: Path) -> dict:
     return json.loads((data_root / "Traits" / "D_Itemable.json").read_text(encoding="utf-8"))

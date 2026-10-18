@@ -167,3 +167,18 @@ def test_redirect_page_round_trip():
     text = redirect_page("ITEM_Pistol_Handgun.png")
     assert text == "#REDIRECT [[File:ITEM_Pistol_Handgun.png]]\n[[Category:Image Redirects]]"
     assert redirect_target("#REDIRECT [[FILE:ITEM_Pistol_Handgun.png]]") == "ITEM_Pistol_Handgun.png"
+
+
+def test_redirect_action_never_overrides_editors():
+    from assetsync.redirects import DONE, KEEP, WRITE, redirect_action
+
+    item = {"redirect": "ITEM_Hot Coffee.png", "target": "ITEM_Thermos.png"}
+    assert redirect_action(False, None, item) == WRITE
+    assert redirect_action(True, "ITEM Thermos.png", item) == DONE
+    # An editor pointed it at a nicer icon: keep it.
+    assert redirect_action(True, "T ITEM DRINK Coffee.png", item) == KEEP
+    # A real file (not a redirect) under the display name: keep it.
+    assert redirect_action(True, None, item) == KEEP
+    # Still where the bot last pointed it, and the game's icon moved: follow the game.
+    moved = {**item, "previous": "ITEM_Old_Thermos.png"}
+    assert redirect_action(True, "ITEM Old Thermos.png", moved) == WRITE
