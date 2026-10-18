@@ -2,8 +2,9 @@
 """
 Minimal MediaWiki API client for wiki.gg automation scripts.
 
-Copied from IcarusWiki/Data scripts/wiki_client.py. Additions: writes carry the bot flag
-and maxlag, and a maxlag response is retried like a rate limit.
+Copied from IcarusWiki/Data scripts/wiki_client.py. Additions: writes carry the bot flag,
+maxlag and format=json (upstream's edit omits it and relies on re-reading the page), a
+maxlag response is retried like a rate limit, and move_page.
 """
 
 from __future__ import annotations
@@ -357,6 +358,7 @@ class MediaWikiClient:
             "bot": "1",
             "maxlag": MAXLAG_SECONDS,
             "token": self.csrf_token,
+            "format": "json",
         }
         if nocreate:
             payload["nocreate"] = "1"
@@ -401,6 +403,7 @@ class MediaWikiClient:
             "bot": "1",
             "maxlag": MAXLAG_SECONDS,
             "token": self.csrf_token,
+            "format": "json",
         }
         if not leave_redirect:
             payload["noredirect"] = "1"
