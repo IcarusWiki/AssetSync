@@ -33,6 +33,8 @@ class TextureRecord:
 class Ledger:
     textures: dict[str, TextureRecord] = field(default_factory=dict)
     redirects: dict[str, str] = field(default_factory=dict)
+    # Redirect names already sent to review, with the candidates they were reported with.
+    redirect_review: dict[str, list[str]] = field(default_factory=dict)
     state: dict[str, str] = field(default_factory=dict)
 
     @classmethod
@@ -44,6 +46,7 @@ class Ledger:
         return cls(
             textures={k: TextureRecord(**v) for k, v in read("textures.json").items()},
             redirects=read("redirects.json"),
+            redirect_review=read("redirect_review.json"),
             state=read("state.json"),
         )
 
@@ -56,7 +59,13 @@ class Ledger:
 
         write("textures.json", {k: asdict(v) for k, v in self.textures.items()})
         write("redirects.json", self.redirects)
+        write("redirect_review.json", self.redirect_review)
         write("state.json", self.state)
+
+
+def synced_textures(ledger: Ledger) -> set[str]:
+    """Texture paths whose file is on the wiki under its texture name."""
+    return {t for t, r in ledger.textures.items() if r.status == SYNCED and r.wiki_file}
 
 
 def wiki_file_name(texture: str) -> str:

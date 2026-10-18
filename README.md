@@ -23,8 +23,14 @@ AssetSync
 - **Changed** textures are uploaded over `File:<TextureName>.png`. MediaWiki keeps the old version in the file history.
 - **New** textures are never uploaded automatically. They're listed in a GitHub issue for review.
 - **Removed** textures get `{{Historical content|Removed in [[Changelog:V…]]}}`. Files are never deleted.
-- **Display-name redirects** `File:ITEM_<DisplayName>.png` → `File:<TextureName>.png` keep `{{Item icon}}` working.
-  Renamed items get a new redirect, and the old one is kept.
+- **Display-name redirects** `File:<PREFIX>_<DisplayName>.png` → `File:<TextureName>.png`:
+  - `ITEM_` for every `D_Itemable` row (keeps `{{Item icon}}` working);
+  - `ACH_` for every Steam achievement in `D_Accolades`, e.g. `ACH_Survival 101.png` → `T_ACH_1_Survival101_Complete.png`.
+    Ribbons and medals are excluded.
+
+  Renamed items get a new redirect, and the old one is kept. An existing page set up differently by an editor is never
+  overwritten. An `ACH_` redirect whose texture isn't on the wiki yet goes to the review issue instead
+  (`ledger/redirect_review.json` remembers what was already reported).
 
 New file pages use `== Licensing ==`, `{{License|game}}` and `[[Category:Assets/2DArt/UI/<folder>]]`.
 

@@ -3,7 +3,7 @@
   scan       fingerprint in-scope textures in local paks (diagnostics)
   processor  [CI, inside IcarusWiki/Data's pak pipeline] diff one pak against the ledger, export changed PNGs
   finalize   [CI] apply processor output to the ledger and queue a publish plan
-  redirects  queue display-name redirects from D_Itemable
+  redirects  queue display-name redirects (ITEM_ from D_Itemable, ACH_ from D_Accolades)
   publish    carry out queued plans on the wiki (dry run unless --live)
 """
 
@@ -25,10 +25,10 @@ from .filepage import mark_historical, new_file_page, redirect_page, redirect_ta
 from .redirects import (
     KEEP,
     WRITE,
-    load_itemable,
+    all_redirects,
+    new_reviews,
     plan_redirects,
     redirect_action,
-    wanted_redirects,
 )
 from .wiki import MediaWikiClient, MediaWikiError
 
@@ -37,6 +37,7 @@ REPO_ROOT = Path(os.environ.get("ICARUS_CONSUMER_REPO_DIR") or Path.cwd())
 API_URL = "https://icarus.wiki.gg/api.php"
 USER_AGENT = "IcarusWiki-AssetSync/0.1 (https://github.com/IcarusWiki/AssetSync)"
 BOT_MIN_WRITE_INTERVAL_SECONDS = 2.0
+REDIRECT_PURPOSE = {"ITEM": "{{Item icon}}", "ACH": "achievement icons"}
 
 
 def _env_path(name: str) -> Path:
@@ -150,15 +151,22 @@ def cmd_finalize(args: argparse.Namespace) -> None:
 
 def cmd_redirects(args: argparse.Namespace) -> None:
     ledger = L.Ledger.load(REPO_ROOT / "ledger")
-    found = wanted_redirects(load_itemable(args.data_root))
+    found = all_redirects(args.data_root, L.synced_textures(ledger))
     plan = plan_redirects(ledger.redirects, found.wanted)
     plan["conflicts"] = found.conflicts
     plan["skipped"] = found.skipped
+    plan["review"] = new_reviews(found.review, ledger.redirect_review)
     queue = REPO_ROOT / "queue" / _build_label(args.build)
     _write_json(queue / "redirects.json", plan)
+    per_prefix: dict[str, int] = {}
+    for name in found.wanted:
+        prefix = name.split("_", 1)[0]
+        per_prefix[prefix] = per_prefix.get(prefix, 0) + 1
+    counts = ", ".join(f"{n} {p}_" for p, n in sorted(per_prefix.items()))
     print(
-        f"{len(found.wanted)} display-name redirects wanted: {len(plan['create'])} to create, "
-        f"{len(plan['retarget'])} to retarget, {len(found.conflicts)} conflicts"
+        f"{len(found.wanted)} display-name redirects wanted ({counts}): {len(plan['create'])} to create, "
+        f"{len(plan['retarget'])} to retarget, {len(found.conflicts)} conflicts, "
+        f"{len(plan['review'])} new for review"
     )
 
 
@@ -246,10 +254,16 @@ def publish_batch(batch: Path, ledger: L.Ledger, client: MediaWikiClient | None,
     redirects_path = batch / "redirects.json"
     if redirects_path.exists():
         plan = json.loads(redirects_path.read_text(encoding="utf-8"))
-        summary = "Automated display-name redirect for {{Item icon}}"
         reader = client or MediaWikiClient(API_URL, user_agent=USER_AGENT)
+        for name, candidates in plan.get("review", {}).items():
+            options = ", ".join(f"`File:{c}`" for c in candidates)
+            review.append(f"- [ ] redirect `File:{name}`: candidates {options} (set it up by hand)")
+            if live:
+                ledger.redirect_review[name] = candidates
         for item in plan["create"] + plan["retarget"]:
             title = f"File:{item['redirect']}"
+            purpose = REDIRECT_PURPOSE.get(item["redirect"].split("_", 1)[0])
+            summary = "Automated display-name redirect" + (f" for {purpose}" if purpose else "")
             page = reader.fetch_page(title)
             decision = redirect_action(page.exists, redirect_target(page.text), item)
             if decision == KEEP:

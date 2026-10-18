@@ -1,20 +1,26 @@
-"""Display-name redirects: File:ITEM_<DisplayName>.png -> File:<TextureName>.png.
+"""Display-name redirects: File:<PREFIX>_<DisplayName>.png -> File:<TextureName>.png.
 
-{{Item icon}} (Module:Link icon) looks for ITEM_<display name>.png, while each texture is
-uploaded once under its own name. Old redirects are never removed, so a renamed item
-keeps working under both names.
+Templates look images up by display name, while each texture is uploaded once under its
+own name:
+
+  ITEM_  every D_Itemable row ({{Item icon}} / Module:Link icon)
+  ACH_   Steam achievements in D_Accolades (achievement icons)
+
+Old redirects are never removed, so a renamed item keeps working under both names.
 """
 
 from __future__ import annotations
 
 import json
 import re
+from collections.abc import Iterable
 from dataclasses import dataclass, field
 from pathlib import Path, PurePosixPath
 
 from . import SCOPE_PREFIX
 
 ICON_TYPE = "ITEM"
+ACHIEVEMENT_TYPE = "ACH"
 # Characters MediaWiki does not allow in page titles.
 INVALID_TITLE_CHARS = set("#<>[]|{}")
 
@@ -48,22 +54,45 @@ class RedirectSet:
     wanted: dict[str, str] = field(default_factory=dict)       # redirect file -> target file
     conflicts: dict[str, list[str]] = field(default_factory=dict)
     skipped: list[str] = field(default_factory=list)
+    # Names a human has to look at: redirect file -> candidate target files.
+    review: dict[str, list[str]] = field(default_factory=dict)
+
+    def update(self, other: RedirectSet) -> None:
+        self.wanted.update(other.wanted)
+        self.conflicts.update(other.conflicts)
+        self.skipped += other.skipped
+        self.review.update(other.review)
 
 
-def wanted_redirects(itemable: dict) -> RedirectSet:
-    defaults = itemable.get("Defaults", {})
+def _rows(table: dict) -> Iterable[tuple[dict, dict]]:
+    defaults = table.get("Defaults", {})
+    for row in table.get("Rows", []):
+        yield row, defaults
+
+
+def build_redirects(
+    prefix: str,
+    entries: Iterable[tuple[str, str | None, str | None]],
+    synced: set[str] | None = None,
+) -> RedirectSet:
+    """Turn (row name, display name, texture) entries into <prefix>_<name>.png redirects.
+
+    With ``synced`` (texture paths known to be on the wiki), a target that isn't there goes
+    to review instead of becoming a broken redirect.
+    """
     result = RedirectSet()
     targets: dict[str, set[str]] = {}
-    for row in itemable.get("Rows", []):
-        name = display_name(row.get("DisplayName", defaults.get("DisplayName")))
-        texture = icon_texture(row.get("Icon", defaults.get("Icon")))
+    for row_name, name, texture in entries:
         if not name or not texture:
             continue
         if INVALID_TITLE_CHARS & set(name):
-            result.skipped.append(f"{row.get('Name')}: {name}")
+            result.skipped.append(f"{row_name}: {name}")
             continue
-        redirect = f"{ICON_TYPE}_{name}.png"
+        redirect = f"{prefix}_{name}.png"
         target = PurePosixPath(texture).name + ".png"
+        if synced is not None and texture not in synced:
+            result.review[redirect] = [target]
+            continue
         if normalize_title(redirect) == normalize_title(target):
             continue
         targets.setdefault(redirect, set()).add(target)
@@ -73,6 +102,45 @@ def wanted_redirects(itemable: dict) -> RedirectSet:
         else:
             result.conflicts[redirect] = sorted(files)
     return result
+
+
+def wanted_redirects(itemable: dict) -> RedirectSet:
+    return build_redirects(
+        ICON_TYPE,
+        (
+            (row.get("Name"),
+             display_name(row.get("DisplayName", defaults.get("DisplayName"))),
+             icon_texture(row.get("Icon", defaults.get("Icon"))))
+            for row, defaults in _rows(itemable)
+        ),
+    )
+
+
+def achievement_redirects(accolades: dict, synced: set[str]) -> RedirectSet:
+    """ACH_<DisplayName>.png for every accolade that is a Steam achievement (not ribbons or medals)."""
+    return build_redirects(
+        ACHIEVEMENT_TYPE,
+        (
+            (row.get("Name"),
+             display_name(row.get("DisplayName", defaults.get("DisplayName"))),
+             icon_texture(row.get("Icon", defaults.get("Icon"))))
+            for row, defaults in _rows(accolades)
+            if row.get("SteamAchievementId", defaults.get("SteamAchievementId", "None")) not in ("", "None")
+        ),
+        synced,
+    )
+
+
+def all_redirects(data_root: Path, synced: set[str]) -> RedirectSet:
+    """Every display-name redirect the game data asks for, across all prefixes."""
+    result = wanted_redirects(load_table(data_root, "Traits/D_Itemable"))
+    result.update(achievement_redirects(load_table(data_root, "Accolades/D_Accolades"), synced))
+    return result
+
+
+def new_reviews(review: dict[str, list[str]], reported: dict[str, list[str]]) -> dict[str, list[str]]:
+    """Review items not yet reported with the same candidates (a changed list is reported again)."""
+    return {name: files for name, files in sorted(review.items()) if reported.get(name) != files}
 
 
 def plan_redirects(known: dict[str, str], wanted: dict[str, str]) -> dict[str, list[dict]]:
@@ -107,5 +175,10 @@ def redirect_action(exists: bool, current_target: str | None, item: dict) -> str
     return KEEP
 
 
+def load_table(data_root: Path, name: str) -> dict:
+    """``name`` like 'Traits/D_Itemable', relative to InGameFiles."""
+    return json.loads((data_root / f"{name}.json").read_text(encoding="utf-8"))
+
+
 def load_itemable(data_root: Path) -> dict:
-    return json.loads((data_root / "Traits" / "D_Itemable.json").read_text(encoding="utf-8"))
+    return load_table(data_root, "Traits/D_Itemable")
