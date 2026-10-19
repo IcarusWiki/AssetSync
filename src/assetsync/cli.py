@@ -3,7 +3,7 @@
   scan       fingerprint in-scope textures in local paks (diagnostics)
   processor  [CI, inside IcarusWiki/Data's pak pipeline] diff one pak against the ledger, export changed PNGs
   finalize   [CI] apply processor output to the ledger and queue a publish plan
-  redirects  queue display-name redirects (ITEM_ from D_Itemable, ACH_ from D_Accolades)
+  redirects  queue display-name redirects (ITEM_, ACH_ and CRE_; see redirects.py)
   publish    carry out queued plans on the wiki (dry run unless --live)
 """
 
@@ -37,7 +37,7 @@ REPO_ROOT = Path(os.environ.get("ICARUS_CONSUMER_REPO_DIR") or Path.cwd())
 API_URL = "https://icarus.wiki.gg/api.php"
 USER_AGENT = "IcarusWiki-AssetSync/0.1 (https://github.com/IcarusWiki/AssetSync)"
 BOT_MIN_WRITE_INTERVAL_SECONDS = 2.0
-REDIRECT_PURPOSE = {"ITEM": "{{Item icon}}", "ACH": "achievement icons"}
+REDIRECT_PURPOSE = {"ITEM": "{{Item icon}}", "ACH": "achievement icons", "CRE": "creature icons"}
 
 
 def _env_path(name: str) -> Path:

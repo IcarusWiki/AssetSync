@@ -5,6 +5,7 @@ own name:
 
   ITEM_  every D_Itemable row ({{Item icon}} / Module:Link icon)
   ACH_   Steam achievements in D_Accolades (achievement icons)
+  CRE_   bestiary creatures: their vestige, else the bestiary image (Module:Link icon)
 
 Old redirects are never removed, so a renamed item keeps working under both names.
 """
@@ -21,6 +22,7 @@ from . import SCOPE_PREFIX
 
 ICON_TYPE = "ITEM"
 ACHIEVEMENT_TYPE = "ACH"
+CREATURE_TYPE = "CRE"
 # Characters MediaWiki does not allow in page titles.
 INVALID_TITLE_CHARS = set("#<>[]|{}")
 
@@ -131,10 +133,102 @@ def achievement_redirects(accolades: dict, synced: set[str]) -> RedirectSet:
     )
 
 
+CREATURE_TABLES = (
+    "AI/D_AISetup",
+    "Bestiary/D_BestiaryData",
+    "Items/D_ItemRewards",
+    "Items/D_ItemTemplate",
+    "Items/D_ItemsStatic",
+    "Traits/D_Itemable",
+)
+
+
+def _by_name(table: dict) -> dict[str, dict]:
+    # Row names are FNames: case-insensitive (D_AISetup asks for AlphaWolf_Head, the row is Alphawolf_Head).
+    return {row.get("Name", "").lower(): row for row in table.get("Rows", [])}
+
+
+def _ref(row: dict, key: str) -> str:
+    return (row.get(key) or {}).get("RowName") or "None"
+
+
+def creature_redirects(tables: dict[str, dict], synced: set[str]) -> RedirectSet:
+    """CRE_<CreatureName>.png for every bestiary entry: its vestige, else the bestiary image.
+
+    The vestige is the D_Itemable row called "<CreatureName> Vestige", or else the one
+    trophy item every D_AISetup creature in the bestiary group drops
+    (AISetup.Trophy -> D_ItemRewards -> D_ItemTemplate -> D_ItemsStatic -> D_Itemable).
+    A group whose creatures drop several vestiges (Chicken, Dog, ...) gets the bestiary
+    image and goes to review, so Module:Link icon can be given an override.
+    """
+    itemable = tables["Traits/D_Itemable"]
+    item_defaults = itemable.get("Defaults", {})
+    items = _by_name(itemable)
+    statics = _by_name(tables["Items/D_ItemsStatic"])
+    templates = _by_name(tables["Items/D_ItemTemplate"])
+    rewards = _by_name(tables["Items/D_ItemRewards"])
+
+    def icon_of(item: dict | None) -> str | None:
+        return icon_texture(item.get("Icon", item_defaults.get("Icon"))) if item else None
+
+    by_display: dict[str, set[str]] = {}
+    for row, defaults in _rows(itemable):
+        name, texture = display_name(row.get("DisplayName", defaults.get("DisplayName"))), icon_of(row)
+        if name and texture:
+            by_display.setdefault(name.lower(), set()).add(texture)
+
+    def trophy_icon(trophy: str) -> str | None:
+        reward = rewards.get(trophy.lower(), {}).get("Rewards") or []
+        if not reward:
+            return None
+        item = _ref(reward[0], "Item")
+        static = _ref(templates.get(item.lower(), {}), "ItemStaticData")
+        static_row = statics.get((item if static == "None" else static).lower())
+        return icon_of(items.get(_ref(static_row, "Itemable").lower())) if static_row else None
+
+    trophies: dict[str, set[str]] = {}
+    for row, _ in _rows(tables["AI/D_AISetup"]):
+        group, trophy = _ref(row, "BestiaryGroup"), _ref(row, "Trophy")
+        if group != "None" and trophy != "None":
+            texture = trophy_icon(trophy)
+            if texture:
+                trophies.setdefault(group.lower(), set()).add(texture)
+
+    def file(texture: str) -> str:
+        return PurePosixPath(texture).name + ".png"
+
+    entries, review = [], {}
+    for row, defaults in _rows(tables["Bestiary/D_BestiaryData"]):
+        name = display_name(row.get("CreatureName", defaults.get("CreatureName")))
+        if not name:
+            continue
+        image = icon_texture(row.get("Image", defaults.get("Image")))
+        exact = by_display.get(f"{name} vestige".lower(), set())
+        chain = trophies.get(row.get("Name", "").lower(), set())
+        redirect = f"{CREATURE_TYPE}_{name}.png"
+        if len(exact) == 1 and exact <= synced:
+            target = next(iter(exact))
+        elif len(exact) <= 1 and len(chain) == 1 and chain <= synced:
+            target = next(iter(chain))
+        else:
+            target = image if image in synced else None
+            vestiges = exact | chain
+            if len(vestiges) > 1:
+                review[redirect] = sorted(file(t) for t in vestiges)
+            elif target is None:
+                review[redirect] = sorted(file(t) for t in vestiges | ({image} if image else set()))
+        entries.append((row.get("Name"), name, target))
+    result = build_redirects(CREATURE_TYPE, entries)
+    result.review.update(review)
+    return result
+
+
 def all_redirects(data_root: Path, synced: set[str]) -> RedirectSet:
     """Every display-name redirect the game data asks for, across all prefixes."""
     result = wanted_redirects(load_table(data_root, "Traits/D_Itemable"))
     result.update(achievement_redirects(load_table(data_root, "Accolades/D_Accolades"), synced))
+    tables = {name: load_table(data_root, name) for name in CREATURE_TABLES}
+    result.update(creature_redirects(tables, synced))
     return result
 
 

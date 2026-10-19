@@ -1,7 +1,7 @@
 name: Display-name redirects
 
 # IcarusWiki/Data dispatches "icarus-updated" whenever InGameFiles changes. Display names
-# live there, so this is when new ITEM_/ACH_<DisplayName>.png redirects may be needed.
+# live there, so this is when new ITEM_/ACH_/CRE_<DisplayName>.png redirects may be needed.
 
 on:
   repository_dispatch:
@@ -32,6 +32,9 @@ jobs:
           sparse-checkout: |
             InGameFiles/Traits
             InGameFiles/Accolades
+            InGameFiles/Bestiary
+            InGameFiles/AI
+            InGameFiles/Items
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
