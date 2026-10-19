@@ -1,1 +1,37 @@
-{}
+{
+ "CRE_Cat.png": [
+  "T_ITEM_Cat_Head_A1.png",
+  "T_ITEM_Cat_Head_A2.png",
+  "T_ITEM_Cat_Head_A3.png"
+ ],
+ "CRE_Cattle.png": [
+  "T_ITEM_Bull_Head.png",
+  "T_ITEM_Calf_Head.png",
+  "T_ITEM_Cow_Head.png"
+ ],
+ "CRE_Chicken.png": [
+  "T_ITEM_Chick_Head.png",
+  "T_ITEM_Chicken_Head.png",
+  "T_ITEM_Chicken_Head_A2.png",
+  "T_ITEM_Chicken_Head_A3.png",
+  "T_ITEM_Rooster_Head.png"
+ ],
+ "CRE_Dog.png": [
+  "T_ITEM_Dog_Head_A1.png",
+  "T_ITEM_Dog_Head_A2.png",
+  "T_ITEM_Dog_Head_B1.png",
+  "T_ITEM_Dog_Head_C1.png",
+  "T_ITEM_Dog_Head_D1.png",
+  "T_ITEM_Dog_Head_D2.png",
+  "T_ITEM_Workshop_Dog_B2.png"
+ ],
+ "CRE_Horse.png": [
+  "T_ITEM_Horse_Head_A1.png",
+  "T_ITEM_Horse_Head_A2.png",
+  "T_ITEM_Horse_Head_A3.png"
+ ],
+ "CRE_Mammoth.png": [
+  "ITEM_Mammoth_Head.png",
+  "T_ITEM_Desert_Mammoth_Head.png"
+ ]
+}
