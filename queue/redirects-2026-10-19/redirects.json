@@ -1,0 +1,540 @@
+{
+ "create": [
+  {
+   "redirect": "CRE_Antelope.png",
+   "target": "T_ITEM_Desert_Deer_Head.png"
+  },
+  {
+   "redirect": "CRE_Arctic Moa.png",
+   "target": "T_Bestiary_ArcticMoa.png"
+  },
+  {
+   "redirect": "CRE_Arctic Scorpion.png",
+   "target": "T_ITEM_Head_ArcticScorpion.png"
+  },
+  {
+   "redirect": "CRE_Arctic Vesper.png",
+   "target": "T_ITEM_Arctic_Bat_Head.png"
+  },
+  {
+   "redirect": "CRE_Arid Striker.png",
+   "target": "T_ITEM_Head_AridStriker.png"
+  },
+  {
+   "redirect": "CRE_Ashen Drake.png",
+   "target": "T_ITEM_Head_AshenDrake.png"
+  },
+  {
+   "redirect": "CRE_Baby Deer.png",
+   "target": "T_Bestiary_BabyDeer.png"
+  },
+  {
+   "redirect": "CRE_Bear Cub.png",
+   "target": "T_Bestiary_BearCub.png"
+  },
+  {
+   "redirect": "CRE_Bear.png",
+   "target": "ITEM_Bear_Head.png"
+  },
+  {
+   "redirect": "CRE_Bee.png",
+   "target": "T_Bestiary_Bees.png"
+  },
+  {
+   "redirect": "CRE_Black Wolf.png",
+   "target": "ITEM_Alpha_Wolf_Head.png"
+  },
+  {
+   "redirect": "CRE_Blueback.png",
+   "target": "T_ITEM_Head_Blueback.png"
+  },
+  {
+   "redirect": "CRE_Boar.png",
+   "target": "T_ITEM_WildBoar_Head.png"
+  },
+  {
+   "redirect": "CRE_Buffalo.png",
+   "target": "ITEM_Buffalo_Head.png"
+  },
+  {
+   "redirect": "CRE_Cat.png",
+   "target": "T_Bestiary_Cat.png"
+  },
+  {
+   "redirect": "CRE_Cattle.png",
+   "target": "T_Bestiary_Cattle.png"
+  },
+  {
+   "redirect": "CRE_Cave Worm.png",
+   "target": "T_ITEM_Head_Caveworm.png"
+  },
+  {
+   "redirect": "CRE_Chala.png",
+   "target": "T_ITEM_Head_Chala.png"
+  },
+  {
+   "redirect": "CRE_Chamois.png",
+   "target": "T_ITEM_Head_Chamios.png"
+  },
+  {
+   "redirect": "CRE_Chicken.png",
+   "target": "T_Bestiary_Chickens.png"
+  },
+  {
+   "redirect": "CRE_Clicker.png",
+   "target": "T_ITEM_Giant_Roach_Head.png"
+  },
+  {
+   "redirect": "CRE_Cougar.png",
+   "target": "ITEM_Couger_Head.png"
+  },
+  {
+   "redirect": "CRE_Crocodile.png",
+   "target": "T_ITEM_Head_Crocodile.png"
+  },
+  {
+   "redirect": "CRE_Deer.png",
+   "target": "ITEM_Deer_Head.png"
+  },
+  {
+   "redirect": "CRE_Dog.png",
+   "target": "T_Bestiary_Dogs.png"
+  },
+  {
+   "redirect": "CRE_Drac.png",
+   "target": "T_ITEM_Head_Drac.png"
+  },
+  {
+   "redirect": "CRE_Draven.png",
+   "target": "T_ITEM_Chew_Head.png"
+  },
+  {
+   "redirect": "CRE_Dreadwing.png",
+   "target": "T_ITEM_Head_Dreadwing.png"
+  },
+  {
+   "redirect": "CRE_Dribbo.png",
+   "target": "T_ITEM_Mini_Hippo_Head.png"
+  },
+  {
+   "redirect": "CRE_Drifter.png",
+   "target": "T_Bestiary_Drifter.png"
+  },
+  {
+   "redirect": "CRE_Drone.png",
+   "target": "T_Bestiary_Drones.png"
+  },
+  {
+   "redirect": "CRE_Drosik.png",
+   "target": "T_ITEM_Tundra_Deer.png"
+  },
+  {
+   "redirect": "CRE_Dune Raptor.png",
+   "target": "T_ITEM_Raptor_Desert_Head.png"
+  },
+  {
+   "redirect": "CRE_Elephant.png",
+   "target": "T_ITEM_Head_Elephant.png"
+  },
+  {
+   "redirect": "CRE_Frostfoot.png",
+   "target": "T_ITEM_Yeti_Head.png"
+  },
+  {
+   "redirect": "CRE_Garganutan Prime.png",
+   "target": "T_ITEM_Ape_Head.png"
+  },
+  {
+   "redirect": "CRE_Garganutan.png",
+   "target": "T_ITEM_AnimalCarcass_Ape_Juvenile.png"
+  },
+  {
+   "redirect": "CRE_Gaseous Floater.png",
+   "target": "T_Bestiary_FleshFloater.png"
+  },
+  {
+   "redirect": "CRE_Giant Scorpion.png",
+   "target": "T_ITEM_Head_GiantScorpion.png"
+  },
+  {
+   "redirect": "CRE_Glaci.png",
+   "target": "T_ITEM_Snow_Slug_Head.png"
+  },
+  {
+   "redirect": "CRE_Gribbler.png",
+   "target": "T_ITEM_TundraMonkey_Head.png"
+  },
+  {
+   "redirect": "CRE_Hammerhead.png",
+   "target": "T_ITEM_Slug_Head.png"
+  },
+  {
+   "redirect": "CRE_Hopper.png",
+   "target": "T_ITEM_Head_Hopping_Creature.png"
+  },
+  {
+   "redirect": "CRE_Horse.png",
+   "target": "T_Bestiary_Horse.png"
+  },
+  {
+   "redirect": "CRE_Hyena.png",
+   "target": "T_ITEM_Desert_Wolf_Head.png"
+  },
+  {
+   "redirect": "CRE_Ignari.png",
+   "target": "T_ITEM_Head_Vicid.png"
+  },
+  {
+   "redirect": "CRE_Jaguar.png",
+   "target": "ITEM_Jaguar_Head.png"
+  },
+  {
+   "redirect": "CRE_Kea.png",
+   "target": "T_ITEM_Head_Kea.png"
+  },
+  {
+   "redirect": "CRE_Kiwi.png",
+   "target": "T_ITEM_Kiwi_Head.png"
+  },
+  {
+   "redirect": "CRE_Komodo.png",
+   "target": "T_ITEM_Komodo_Head.png"
+  },
+  {
+   "redirect": "CRE_Korrin.png",
+   "target": "T_ITEM_Bounder_Head.png"
+  },
+  {
+   "redirect": "CRE_Landshark.png",
+   "target": "T_ITEM_Head_Landshark.png"
+  },
+  {
+   "redirect": "CRE_Lava Broodlings.png",
+   "target": "T_ITEM_Head_LavaBroodling.png"
+  },
+  {
+   "redirect": "CRE_Lava Hunter.png",
+   "target": "T_ITEM_Head_LavaHunter.png"
+  },
+  {
+   "redirect": "CRE_Mammoth.png",
+   "target": "T_Bestiary_Mammoth.png"
+  },
+  {
+   "redirect": "CRE_Moa.png",
+   "target": "T_ITEM_Head_Moa.png"
+  },
+  {
+   "redirect": "CRE_Needler.png",
+   "target": "T_ITEM_Head_Needler.png"
+  },
+  {
+   "redirect": "CRE_Pig.png",
+   "target": "T_ITEM_Pig_Head.png"
+  },
+  {
+   "redirect": "CRE_Plains Equix.png",
+   "target": "T_ITEM_Head_Equix.png"
+  },
+  {
+   "redirect": "CRE_Polar Bear Cub.png",
+   "target": "T_Bestiary_PolarBearCub.png"
+  },
+  {
+   "redirect": "CRE_Polar Bear.png",
+   "target": "ITEM_PolarBear_Head.png"
+  },
+  {
+   "redirect": "CRE_Pronghorn.png",
+   "target": "T_ITEM_Head_Pronghorn.png"
+  },
+  {
+   "redirect": "CRE_Pygmy Lop.png",
+   "target": "T_ITEM_Head_Lopp.png"
+  },
+  {
+   "redirect": "CRE_Quarrite.png",
+   "target": "T_ITEM_RockGolem_Juvie_Head.png"
+  },
+  {
+   "redirect": "CRE_Rabbit.png",
+   "target": "T_ITEM_Head_Rabbit.png"
+  },
+  {
+   "redirect": "CRE_Raptor.png",
+   "target": "T_ITEM_Raptor_Head.png"
+  },
+  {
+   "redirect": "CRE_Ravager.png",
+   "target": "T_ITEM_Flying_Tank_Head.png"
+  },
+  {
+   "redirect": "CRE_Reaver.png",
+   "target": "T_ITEM_Head_Reaver.png"
+  },
+  {
+   "redirect": "CRE_Redback.png",
+   "target": "T_ITEM_Head_Redback.png"
+  },
+  {
+   "redirect": "CRE_Revenant.png",
+   "target": "T_ITEM_Head_Irradiated_Abomination.png"
+  },
+  {
+   "redirect": "CRE_Rimetusk Matriarch.png",
+   "target": "T_ITEM_IceMammoth_Head.png"
+  },
+  {
+   "redirect": "CRE_Rimetusk.png",
+   "target": "T_ITEM_Snow_Mammoth_Head.png"
+  },
+  {
+   "redirect": "CRE_Roat.png",
+   "target": "T_ITEM_Head_Roat.png"
+  },
+  {
+   "redirect": "CRE_Sandhorn.png",
+   "target": "T_ITEM_Flightless_Tank_Head.png"
+  },
+  {
+   "redirect": "CRE_Sandworm.png",
+   "target": "T_ITEM_Sandworm_Head.png"
+  },
+  {
+   "redirect": "CRE_Sandwyrm Queen.png",
+   "target": "T_ITEM_Sandwyrm_Queen_Head.png"
+  },
+  {
+   "redirect": "CRE_Scorpion.png",
+   "target": "T_ITEM_Head_Scorpion.png"
+  },
+  {
+   "redirect": "CRE_Scuttler.png",
+   "target": "T_ITEM_Sandscuttle_Head.png"
+  },
+  {
+   "redirect": "CRE_Shaggy Zebra.png",
+   "target": "T_ITEM_Head_WoolyZebra.png"
+  },
+  {
+   "redirect": "CRE_Sheep.png",
+   "target": "T_ITEM_Sheep_Head.png"
+  },
+  {
+   "redirect": "CRE_Skulk.png",
+   "target": "T_ITEM_Orka_Arctic_Head.png"
+  },
+  {
+   "redirect": "CRE_Skulmutt.png",
+   "target": "T_ITEM_Mange_Wolf.png"
+  },
+  {
+   "redirect": "CRE_Slinker.png",
+   "target": "T_ITEM_AnimalHead_Slinker.png"
+  },
+  {
+   "redirect": "CRE_Snow Leopard.png",
+   "target": "ITEM_SnowLeopard_Head.png"
+  },
+  {
+   "redirect": "CRE_Snow Stalker.png",
+   "target": "T_ITEM_Head_SnowStalker.png"
+  },
+  {
+   "redirect": "CRE_Snow Wolf.png",
+   "target": "ITEM_Snow_Wolf_Head.png"
+  },
+  {
+   "redirect": "CRE_Spectre.png",
+   "target": "T_ITEM_HEAD_Irradiated_Prospector.png"
+  },
+  {
+   "redirect": "CRE_Spider.png",
+   "target": "T_ITEM_Spider_Head.png"
+  },
+  {
+   "redirect": "CRE_Stomper.png",
+   "target": "T_ITEM_Stomper_Head.png"
+  },
+  {
+   "redirect": "CRE_Stonejaw.png",
+   "target": "T_ITEM_Head_Stonejaw.png"
+  },
+  {
+   "redirect": "CRE_Storca.png",
+   "target": "T_ITEM_Storca_Head.png"
+  },
+  {
+   "redirect": "CRE_Stryder.png",
+   "target": "T_ITEM_Head_Stryder.png"
+  },
+  {
+   "redirect": "CRE_Sulfur Vesper.png",
+   "target": "T_ITEM_Geothermal_Bat_Head.png"
+  },
+  {
+   "redirect": "CRE_Sulfur Worm.png",
+   "target": "T_ITEM_Head_SulfurWorm.png"
+  },
+  {
+   "redirect": "CRE_Sulfuric Spider.png",
+   "target": "T_ITEM_AnimalHead_GeothermalSpider.png"
+  },
+  {
+   "redirect": "CRE_Swamp Hopper.png",
+   "target": "T_ITEM_Head_Hopping_Creature_Swamp.png"
+  },
+  {
+   "redirect": "CRE_Teenage Caveworm.png",
+   "target": "T_ITEM_Head_TeenageCaveworm.png"
+  },
+  {
+   "redirect": "CRE_Terrenus.png",
+   "target": "T_ITEM_Head_Terrenus.png"
+  },
+  {
+   "redirect": "CRE_Trapjaw.png",
+   "target": "T_ITEM_Head_GhostCrocodile.png"
+  },
+  {
+   "redirect": "CRE_Tusker.png",
+   "target": "T_ITEM_Tusker_Head.png"
+  },
+  {
+   "redirect": "CRE_Ubis.png",
+   "target": "T_ITEM_Head_Ubis.png"
+  },
+  {
+   "redirect": "CRE_Unstable Quarrite.png",
+   "target": "T_ITEM_Rock_Golem_Head.png"
+  },
+  {
+   "redirect": "CRE_Venomfly.png",
+   "target": "T_ITEM_DragonFly_Head.png"
+  },
+  {
+   "redirect": "CRE_Viscid.png",
+   "target": "T_ITEM_Head_SwampVicid.png"
+  },
+  {
+   "redirect": "CRE_Wolf.png",
+   "target": "ITEM_Conifer_Wolf_Head.png"
+  },
+  {
+   "redirect": "CRE_Wraith.png",
+   "target": "T_ITEM_Head_Irradiated_Mutation.png"
+  },
+  {
+   "redirect": "CRE_Zebra.png",
+   "target": "T_ITEM_Head_Zebra.png"
+  }
+ ],
+ "retarget": [],
+ "conflicts": {
+  "ITEM_Clipboard.png": [
+   "T_ITEM_Prop_Clipboard_A.png",
+   "T_ITEM_Prop_Clipboard_G.png"
+  ],
+  "ITEM_Concrete Furnace.png": [
+   "ITEM_Concrete_Furnace_V2.png",
+   "ITEM_Kit_Concrete_Furnace.png"
+  ],
+  "ITEM_Device Component.png": [
+   "ITEM_FactionMission_Tech1.png",
+   "ITEM_FactionMission_Tech2.png",
+   "ITEM_FactionMission_Tech3.png"
+  ],
+  "ITEM_Electric Furnace.png": [
+   "ITEM_Electric_Furnace_Large.png",
+   "ITEM_Kit_Electric_Furnace.png"
+  ],
+  "ITEM_Foundry.png": [
+   "T_ITEM_Anvil_Bench_T4.png",
+   "T_ITEM_Anvil_Bench_T4_v2.png"
+  ],
+  "ITEM_Honey Tea.png": [
+   "ITEM_Thermos.png",
+   "T_ITEM_DRINK_Honey.png"
+  ],
+  "ITEM_Hot Cocoa.png": [
+   "ITEM_Thermos.png",
+   "T_ITEM_DRINK_Cocoa.png"
+  ],
+  "ITEM_Ice Water.png": [
+   "ITEM_Thermos.png",
+   "T_ITEM_DRINK_Ice.png"
+  ],
+  "ITEM_Laptop.png": [
+   "T_ITEM_Collectable_Laptop.png",
+   "T_ITEM_Prop_Laptop_A.png"
+  ],
+  "ITEM_Purified Water.png": [
+   "T_ITEM_DRINK_PurificationPill.png",
+   "T_ITEM_DRINK_XigoPuri.png"
+  ],
+  "ITEM_Unknown component.png": [
+   "ITEM_Mission_HighTech_1.png",
+   "ITEM_Mission_HighTech_2.png",
+   "ITEM_Mission_HighTech_3.png"
+  ],
+  "ITEM_Water.png": [
+   "Icon_RecipeWater.png",
+   "T_ITEM_DRINK_Water.png"
+  ]
+ },
+ "skipped": [
+  "Item_Ashlands_Bunker_Note_1: Ruaumoko Bunker - Note #1",
+  "Item_Ashlands_Bunker_Note_2: Ruaumoko Bunker - Note #2",
+  "Item_Ashlands_Bunker_Note_3: Ruaumoko Bunker - Note #3",
+  "Item_Icesheet_Outpost_Note_1: Icesheet Outpost - Note #1",
+  "Item_Icesheet_Outpost_Note_2: Icesheet Outpost - Note #2",
+  "Item_Icesheet_Outpost_Note_3: Icesheet Outpost - Note #3",
+  "Item_Icesheet_Cave_Note_1: Icesheet Cave - Note #1",
+  "Item_Icesheet_Cave_Note_2: Icesheet Cave - Note #2",
+  "Item_Icesheet_Cave_Note_3: Icesheet Cave - Note #3",
+  "Item_GH_RG_MiningCamp_1: Olympus Mining Site Alpha - Scribbled Note #1",
+  "Item_GH_RG_MiningCamp_2: Olympus Mining Site Alpha - Scribbled Note #2",
+  "Mission_ELY5_note_1: Mo's Journal Entry #1",
+  "Mission_ELY5_note_2: Mo's Journal Entry #2",
+  "Mission_ELY5_note_3: Mo's Journal Entry #3",
+  "Mission_ELY5_note_4: Mo's Journal Entry #4",
+  "Mission_ELY5_note_5: Mo's Journal Entry #5"
+ ],
+ "review": {
+  "CRE_Cat.png": [
+   "T_ITEM_Cat_Head_A1.png",
+   "T_ITEM_Cat_Head_A2.png",
+   "T_ITEM_Cat_Head_A3.png"
+  ],
+  "CRE_Cattle.png": [
+   "T_ITEM_Bull_Head.png",
+   "T_ITEM_Calf_Head.png",
+   "T_ITEM_Cow_Head.png"
+  ],
+  "CRE_Chicken.png": [
+   "T_ITEM_Chick_Head.png",
+   "T_ITEM_Chicken_Head.png",
+   "T_ITEM_Chicken_Head_A2.png",
+   "T_ITEM_Chicken_Head_A3.png",
+   "T_ITEM_Rooster_Head.png"
+  ],
+  "CRE_Dog.png": [
+   "T_ITEM_Dog_Head_A1.png",
+   "T_ITEM_Dog_Head_A2.png",
+   "T_ITEM_Dog_Head_B1.png",
+   "T_ITEM_Dog_Head_C1.png",
+   "T_ITEM_Dog_Head_D1.png",
+   "T_ITEM_Dog_Head_D2.png",
+   "T_ITEM_Workshop_Dog_B2.png"
+  ],
+  "CRE_Horse.png": [
+   "T_ITEM_Horse_Head_A1.png",
+   "T_ITEM_Horse_Head_A2.png",
+   "T_ITEM_Horse_Head_A3.png"
+  ],
+  "CRE_Mammoth.png": [
+   "ITEM_Mammoth_Head.png",
+   "T_ITEM_Desert_Mammoth_Head.png"
+  ]
+ }
+}
