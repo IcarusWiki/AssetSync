@@ -36697,7 +36697,7 @@
   "removed_in": null,
   "status": "synced",
   "wiki_file": "T_ITEM_Ape_Head.png",
-  "wiki_pixel_sha256": "b1e144ad92a3b80b8dc78d018a82d58be893604b02c3b939bc7f083e99d6ac53"
+  "wiki_pixel_sha256": "7f7580a354a62a2af370c990fdf81c3a50911ca15abc033c47b46be2c361c7a4"
  },
  "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Arctic_Bat_Head": {
   "first_seen": "25956278",
@@ -36727,7 +36727,7 @@
   "removed_in": null,
   "status": "synced",
   "wiki_file": "T_ITEM_Bull_Head.png",
-  "wiki_pixel_sha256": "2f72371053b5cda4adf23b9b8426d3e4e0af37f367089122d6fc9791d2963872"
+  "wiki_pixel_sha256": "4ff5a870106947e092de335e88033054100598fe4db07882f3852dcb7a18f6a5"
  },
  "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Calf_Head": {
   "first_seen": "25956278",
@@ -36737,7 +36737,7 @@
   "removed_in": null,
   "status": "synced",
   "wiki_file": "T_ITEM_Calf_Head.png",
-  "wiki_pixel_sha256": "49ab009173c95fdfd59f54e50e10ffad828153e751d5e0de80a18d5f2fb82d06"
+  "wiki_pixel_sha256": "d3e62c9011c004cde906835d2532efe63eba93a4282b3c4d5558aa83e5fbf13a"
  },
  "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Cat_Head_A1": {
   "first_seen": "25956278",
@@ -36807,7 +36807,7 @@
   "removed_in": null,
   "status": "synced",
   "wiki_file": "T_ITEM_Chicken_Head.png",
-  "wiki_pixel_sha256": "a54723e7baaab62d64daad0bf8df503aaaf427317a34c64def9e8e9cc43670a9"
+  "wiki_pixel_sha256": "2dc230194d2846cd7abf53ac97e2f48e3c3e2fb5944ece5072130fb507cf7cd2"
  },
  "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Chicken_Head_A2": {
   "first_seen": "25956278",
@@ -36817,7 +36817,7 @@
   "removed_in": null,
   "status": "synced",
   "wiki_file": "T_ITEM_Chicken_Head_A2.png",
-  "wiki_pixel_sha256": "79ecbf45d676f0db9e8c25810f0a1e765b0ef2c524a0dbd464b23f7e332e2247"
+  "wiki_pixel_sha256": "b8130a76b445ca1c1d4d75165fe49c7f2be7cc118c2f0214fe6eb85cb2b30514"
  },
  "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Chicken_Head_A3": {
   "first_seen": "25956278",
@@ -36827,7 +36827,7 @@
   "removed_in": null,
   "status": "synced",
   "wiki_file": "T_ITEM_Chicken_Head_A3.png",
-  "wiki_pixel_sha256": "a0a3e7436e3f85f5fb3dbb902f3eb41e115bf184c63dff925ae80c1621bfa396"
+  "wiki_pixel_sha256": "9a2eeed61ea2f36e3a3d259424c7e34c78b00a035c705b53e5c8c747e291fe31"
  },
  "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Cow_Head": {
   "first_seen": "25956278",
@@ -36837,7 +36837,7 @@
   "removed_in": null,
   "status": "synced",
   "wiki_file": "T_ITEM_Cow_Head.png",
-  "wiki_pixel_sha256": "6b893889f2b147e737e7257c14aec02623fb99b3a4d4b61bb54b4de81ef90ea9"
+  "wiki_pixel_sha256": "a7e8d4230ee05ca45f7ac9889320650fff5c1fb372b07a7815bc162f6aa265b5"
  },
  "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Desert_Deer_Head": {
   "first_seen": "25956278",
@@ -36867,7 +36867,7 @@
   "removed_in": null,
   "status": "synced",
   "wiki_file": "T_ITEM_Desert_Mammoth_Head.png",
-  "wiki_pixel_sha256": "be418d20a18ee9d652332109225a3e680b5ff39152cfbb6cd8d8fdd04ac9a697"
+  "wiki_pixel_sha256": "d23325f6784126d7117597e058eac536d3ff16074e951dc3e1fdcb6ce41f06a5"
  },
  "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Desert_Mammoth_Trophy": {
   "first_seen": "25956278",
@@ -36987,7 +36987,7 @@
   "removed_in": null,
   "status": "synced",
   "wiki_file": "T_ITEM_Flying_Tank_Head.png",
-  "wiki_pixel_sha256": "c57a2bf367011ad1998b5ce7a0b8baecc7d534b1bc9b9a06c3946f07caed8005"
+  "wiki_pixel_sha256": "e5f796aa32b8712fd4a67ab0e532a7c6629f19edd78f41e1e328d02ecbda3aad"
  },
  "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Geothermal_Bat_Head": {
   "first_seen": "25956278",
@@ -37117,7 +37117,7 @@
   "removed_in": null,
   "status": "synced",
   "wiki_file": "T_ITEM_Head_Dreadwing.png",
-  "wiki_pixel_sha256": "ef9787d0578e4c6c0c903dc288effe86010a2da98d8b73a94c13d40bcb644472"
+  "wiki_pixel_sha256": "055d09c15dbe1393ae050a8173408add948ce4d350be966744edec98e28348c3"
  },
  "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Head_Elephant": {
   "first_seen": "25956278",
@@ -37127,7 +37127,7 @@
   "removed_in": null,
   "status": "synced",
   "wiki_file": "T_ITEM_Head_Elephant.png",
-  "wiki_pixel_sha256": "d4c8cfc269e30ed3326add9ee557b06470f6cb7a293f9b65577838f717e67481"
+  "wiki_pixel_sha256": "452869dc6c20d6e8afe0173b7ab74b2d358a2640f6a22cfa598d7d6fbecec37b"
  },
  "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Head_Equix": {
   "first_seen": "25956278",
@@ -37367,7 +37367,7 @@
   "removed_in": null,
   "status": "synced",
   "wiki_file": "T_ITEM_Head_SulfurWorm.png",
-  "wiki_pixel_sha256": "3582b95f7a0337792d72bc14fcc8af24e879f2ceb7237f207ed85a4c71f74b08"
+  "wiki_pixel_sha256": "fec90204ea072416be7bd142a81203edb50916e7e0628fccea873cf4c48f1d46"
  },
  "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Head_SwampVicid": {
   "first_seen": "25956278",
@@ -37397,7 +37397,7 @@
   "removed_in": null,
   "status": "synced",
   "wiki_file": "T_ITEM_Head_Terrenus.png",
-  "wiki_pixel_sha256": "8716247202058f3a0abe76e515de576a47ec9295386552c3afbbe4e47b91505f"
+  "wiki_pixel_sha256": "5a9dd96253f46c5bcd7cd74b27412584a90768be8e07d8f82a11327594274f50"
  },
  "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Head_Ubis": {
   "first_seen": "25956278",
@@ -37627,7 +37627,7 @@
   "removed_in": null,
   "status": "synced",
   "wiki_file": "T_ITEM_RockGolem_Juvie_Head.png",
-  "wiki_pixel_sha256": "2e6ce33e7a4ee1c12a0f6e7fe272839b17b9b7ac9134ce18f09b1bb250010a5d"
+  "wiki_pixel_sha256": "34174bbab23a4308167818ae6d547749dccf6cf74b6669de0e6dbeb72e603648"
  },
  "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Rock_Golem_Head": {
   "first_seen": "25956278",
@@ -37637,7 +37637,7 @@
   "removed_in": null,
   "status": "synced",
   "wiki_file": "T_ITEM_Rock_Golem_Head.png",
-  "wiki_pixel_sha256": "d5ad11cb7252f962a8c460288fd26a09f083f926c3ffb0e17df724271e9ba7d7"
+  "wiki_pixel_sha256": "607e993a31a208881b7a4756b9e3107a5edbe2934863828fdaab3242d8a404ef"
  },
  "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Rooster_Head": {
   "first_seen": "25956278",
@@ -37647,7 +37647,7 @@
   "removed_in": null,
   "status": "synced",
   "wiki_file": "T_ITEM_Rooster_Head.png",
-  "wiki_pixel_sha256": "52f60b4d8af647d4cf6d759febc7f512edbfa50f51d545ad390a6cd763d021ab"
+  "wiki_pixel_sha256": "512e221b9e0511b326ad34d14a7c2bf421066430690e671d76676aa9d789a790"
  },
  "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Sandscuttle_Head": {
   "first_seen": "25956278",
@@ -37707,7 +37707,7 @@
   "removed_in": null,
   "status": "synced",
   "wiki_file": "T_ITEM_Serum_Bull.png",
-  "wiki_pixel_sha256": "950148d94230360cf334d8566302eeea11599770ccf2e8dbb5863a2b50e70b6c"
+  "wiki_pixel_sha256": "65a05a208d9bab3427a7d1443a51efe2b8d62f68af5572288d5140cc9acadbd6"
  },
  "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Serum_Moa": {
   "first_seen": "25956278",
@@ -37807,7 +37807,7 @@
   "removed_in": null,
   "status": "synced",
   "wiki_file": "T_ITEM_Serum_Tundra_Monkey.png",
-  "wiki_pixel_sha256": "5f7b4bd8886505134cb2c536ef10bece0f02291f627cd5bb5a7a76a1b826fd94"
+  "wiki_pixel_sha256": "038830aba0a5c091cfd0ed6f129831779bf3bb39bd66ea5210fea82759d62d69"
  },
  "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Serum_Tusker": {
   "first_seen": "25956278",
@@ -43107,7 +43107,7 @@
   "removed_in": null,
   "status": "synced",
   "wiki_file": "ITEM_Interior_Wood_Cupboard.png",
-  "wiki_pixel_sha256": "f7222e41c6a837bc34495cfcca4e3f57b9444c84f4eacd1d6eec54d28dd11d6f"
+  "wiki_pixel_sha256": "100f7d17442296a4e6af0a6a52818d56302594c6b803dfbc9ed7e1990b7b37e6"
  },
  "Assets/2DArt/UI/Items/Item_Icons/Deployables/ITEM_Interior_Wood_Cupboard_Small": {
   "first_seen": "25956278",
@@ -43117,7 +43117,7 @@
   "removed_in": null,
   "status": "synced",
   "wiki_file": "ITEM_Interior_Wood_Cupboard_Small.png",
-  "wiki_pixel_sha256": "495f18b5719d68b826f9a2870fda152e592d30a0565ac0bf207c877e0b0df615"
+  "wiki_pixel_sha256": "64e3910dc73fad570dd30884469737589d9eaf89eaf607da18c1596bedaad7e7"
  },
  "Assets/2DArt/UI/Items/Item_Icons/Deployables/ITEM_Interior_Wood_Ladder": {
   "first_seen": "25956278",
@@ -43277,7 +43277,7 @@
   "removed_in": null,
   "status": "synced",
   "wiki_file": "ITEM_Kit_Metal_Cupboard.png",
-  "wiki_pixel_sha256": "b263fde1f889888fc5552643492936277fcaad0d3035074da8790d8b447da080"
+  "wiki_pixel_sha256": "965145c207199268832e218677675c0e06585606bd97904833aa438d3586f171"
  },
  "Assets/2DArt/UI/Items/Item_Icons/Deployables/ITEM_Kit_Mortar_And_Pestle": {
   "first_seen": "25956278",
@@ -43347,7 +43347,7 @@
   "removed_in": null,
   "status": "synced",
   "wiki_file": "ITEM_Kit_Wood_Cupboard.png",
-  "wiki_pixel_sha256": "da2506a5e450df1cf5d4361db1c9d092a9d8afb6f81cd2320ac43def7399ad9e"
+  "wiki_pixel_sha256": "2a40415de8d2496b361d142d52cbe40e78e608a7ade0d45488d25837e2ea5e59"
  },
  "Assets/2DArt/UI/Items/Item_Icons/Deployables/ITEM_Kitchen_Bench": {
   "first_seen": "25956278",
@@ -43547,7 +43547,7 @@
   "removed_in": null,
   "status": "synced",
   "wiki_file": "ITEM_Metal_Cupboard_Small.png",
-  "wiki_pixel_sha256": "8342b34895f704822b74e6b314794a97e7363b34a70ea93adfc7e6d921a79036"
+  "wiki_pixel_sha256": "ee8ea041747381ea18f70142bc597acb524e0c8c3b9d74f9d1caecb255757a24"
  },
  "Assets/2DArt/UI/Items/Item_Icons/Deployables/ITEM_Metal_Ladder": {
   "first_seen": "25956278",
@@ -44727,7 +44727,7 @@
   "removed_in": null,
   "status": "synced",
   "wiki_file": "ITEM_Wood_Cupboard_Small.png",
-  "wiki_pixel_sha256": "22c71cba949ebb8325bfeb2907fad67ca5d7cca81f915eba12cd0c0b65d901ab"
+  "wiki_pixel_sha256": "fae4ddcb01aa3d5d6202719ef31c8474e4937a3746b4dee135f4025f0e3cfe0e"
  },
  "Assets/2DArt/UI/Items/Item_Icons/Deployables/ITEM_Wood_Door": {
   "first_seen": "25956278",
