@@ -81,7 +81,14 @@ class Changes:
     changed: list[str] = field(default_factory=list)    # pak fingerprint differs
     added: list[str] = field(default_factory=list)
     removed: list[str] = field(default_factory=list)
+    # Ignored assets (materials, widgets, ...) whose pak fingerprint differs. They are
+    # never exported: many aren't textures at all, and Ue4Export fails on those.
+    ignored: list[str] = field(default_factory=list)
     unchanged: int = 0
+
+    @property
+    def to_export(self) -> list[str]:
+        return self.changed + self.added
 
 
 def diff(ledger: Ledger, scanned: dict[str, str]) -> Changes:
@@ -91,13 +98,13 @@ def diff(ledger: Ledger, scanned: dict[str, str]) -> Changes:
         if record is None or record.status == REMOVED:
             changes.added.append(texture)
         elif record.pak_sha1 != pak_sha1:
-            changes.changed.append(texture)
+            (changes.ignored if record.status == IGNORED else changes.changed).append(texture)
         else:
             changes.unchanged += 1
     for texture, record in ledger.textures.items():
         if texture not in scanned and record.status != REMOVED:
             changes.removed.append(texture)
-    for bucket in (changes.changed, changes.added, changes.removed):
+    for bucket in (changes.changed, changes.added, changes.removed, changes.ignored):
         bucket.sort()
     return changes
 
@@ -110,12 +117,16 @@ def plan_update(
     *,
     build: str,
     version: str | None,
+    not_textures: set[str] | frozenset[str] = frozenset(),
 ) -> dict:
     """Apply a scan to the ledger and return the publish plan.
 
     ``pixels`` holds decoded pixel hashes for every changed or added texture.
+    ``not_textures`` lists exported assets that produced no image; new ones are ignored.
     """
-    hash_only, review, historical = [], [], []
+    hash_only, review, historical, ignored_new = [], [], [], []
+    for texture in changes.ignored:
+        ledger.textures[texture].pak_sha1 = scanned[texture]
     for texture in changes.changed:
         record = ledger.textures[texture]
         record.pak_sha1 = scanned[texture]
@@ -129,16 +140,17 @@ def plan_update(
             record.last_changed = build
     for texture in changes.added:
         previous = ledger.textures.get(texture)
+        not_texture = texture in not_textures and texture not in pixels
         ledger.textures[texture] = TextureRecord(
             pak_sha1=scanned[texture],
             pixel_sha256=pixels.get(texture),
             wiki_file=previous.wiki_file if previous else None,
             wiki_pixel_sha256=previous.wiki_pixel_sha256 if previous else None,
-            status=REVIEW,
+            status=IGNORED if not_texture else REVIEW,
             first_seen=previous.first_seen if previous else build,
             last_changed=build,
         )
-        review.append(texture)
+        (ignored_new if not_texture else review).append(texture)
     for texture in changes.removed:
         record = ledger.textures[texture]
         record.status = REMOVED
@@ -169,5 +181,7 @@ def plan_update(
         "historical": [entry(t) for t in historical],
         "review": [entry(t) for t in review],
         "hash_only": hash_only,
+        "not_textures": ignored_new,
+        "ignored_recooked": len(changes.ignored),
         "unchanged": changes.unchanged,
     }

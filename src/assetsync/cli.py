@@ -17,6 +17,7 @@ import re
 import shutil
 import sys
 import time
+from dataclasses import dataclass
 from pathlib import Path
 
 from . import ledger as L
@@ -108,34 +109,83 @@ def cmd_processor(args: argparse.Namespace) -> None:
     changes = L.diff(ledger, scanned)
     print(
         f"{pak_file.name}: {len(scanned)} textures, {changes.unchanged} unchanged, "
-        f"{len(changes.changed)} changed, {len(changes.added)} added, {len(changes.removed)} removed"
+        f"{len(changes.changed)} changed, {len(changes.added)} added, {len(changes.removed)} removed, "
+        f"{len(changes.ignored)} ignored assets re-cooked"
     )
+    # Written first so the finalizer still gets the scan if the export step fails.
+    _write_json(artifact / "scan.json", scanned)
+    to_export = changes.to_export
     exported = export_textures(
-        changes.changed + changes.added,
+        to_export,
         ue4export=ue4export,
         paks_dir=pak_file.parent,
         out_dir=artifact / "export",
     )
-    _write_json(artifact / "scan.json", scanned)
+    not_textures = sorted(set(to_export) - set(exported))
+    if not_textures:
+        print(f"{len(not_textures)} assets produced no image: " + ", ".join(not_textures))
+    _write_json(artifact / "not_textures.json", not_textures)
     _write_json(artifact / "pixels.json", hash_exports(exported))
 
 
+@dataclass
+class Partials:
+    scanned: dict[str, str]
+    pixels: dict[str, str]
+    not_textures: set[str]
+    export_roots: list[Path]  # each holds Icarus/Content/<texture>.png
+
+    def png(self, texture: str) -> Path | None:
+        for root in self.export_roots:
+            path = root / "Icarus" / "Content" / f"{texture}.png"
+            if path.exists():
+                return path
+        return None
+
+
+def load_partials(partials: Path) -> Partials | None:
+    """Merge processor output: either one directory, or one subdirectory per pak.
+
+    The Data pipeline stages each pak's artifact as ``<partials>/<pak_slug>/``.
+    """
+    dirs = [partials] if (partials / "scan.json").exists() else sorted(
+        d for d in partials.glob("*/") if (d / "scan.json").exists()
+    )
+    if not dirs:
+        return None
+
+    def read(path: Path, default):
+        return json.loads(path.read_text(encoding="utf-8")) if path.exists() else default
+
+    merged = Partials({}, {}, set(), [])
+    for d in dirs:
+        merged.scanned.update(read(d / "scan.json", {}))
+        merged.pixels.update(read(d / "pixels.json", {}))
+        merged.not_textures.update(read(d / "not_textures.json", []))
+        merged.export_roots.append(d / "export")
+    return merged
+
+
 def cmd_finalize(args: argparse.Namespace) -> None:
-    partials = args.partials_dir
-    scanned = json.loads((partials / "scan.json").read_text(encoding="utf-8"))
-    pixels = json.loads((partials / "pixels.json").read_text(encoding="utf-8"))
+    partials = load_partials(args.partials_dir)
+    if partials is None:
+        print(f"No processor output (scan.json) under {args.partials_dir}; nothing to finalize.")
+        return
+    scanned, pixels = partials.scanned, partials.pixels
     ledger_dir = REPO_ROOT / "ledger"
     ledger = L.Ledger.load(ledger_dir)
     build = _build_label(args.build)
     version = args.version or latest_changelog_version(MediaWikiClient(API_URL, user_agent=USER_AGENT))
 
     changes = L.diff(ledger, scanned)
-    plan = L.plan_update(ledger, scanned, changes, pixels, build=build, version=version)
+    plan = L.plan_update(
+        ledger, scanned, changes, pixels, build=build, version=version, not_textures=partials.not_textures
+    )
 
     queue = REPO_ROOT / "queue" / build
     for item in plan["uploads"] + plan["review"]:
-        png = partials / "export" / "Icarus" / "Content" / f"{item['texture']}.png"
-        if png.exists():
+        png = partials.png(item["texture"])
+        if png is not None:
             item["png"] = f"png/{item['texture']}.png"
             dest = queue / item["png"]
             dest.parent.mkdir(parents=True, exist_ok=True)
@@ -297,11 +347,16 @@ def render_report(plan: dict) -> str:
         f"| **Uploads** (pixels changed) | {len(plan['uploads'])} |",
         f"| Removed from game (mark historical) | {len(plan['historical'])} |",
         f"| New textures for review | {len(plan['review'])} |",
+        f"| New assets with no image (ignored) | {len(plan.get('not_textures', []))} |",
+        f"| Ignored assets re-cooked (not exported) | {plan.get('ignored_recooked', 0)} |",
         "",
     ]
     for title, key in (("Uploads", "uploads"), ("Removed", "historical"), ("For review", "review")):
         if plan[key]:
             lines += [f"## {title}", ""] + [f"- `File:{i['wiki_file']}` ({i['texture']})" for i in plan[key]] + [""]
+    if plan.get("not_textures"):
+        lines += ["## Ignored: no image exported (materials, widgets, ...)", ""]
+        lines += [f"- `{t}`" for t in plan["not_textures"]] + [""]
     return "\n".join(lines)
 
 

@@ -288,3 +288,92 @@ def test_redirect_action_never_overrides_editors():
     # Still where the bot last pointed it, and the game's icon moved: follow the game.
     moved = {**item, "previous": "ITEM_Old_Thermos.png"}
     assert redirect_action(True, "ITEM Old Thermos.png", moved) == WRITE
+
+
+# --- pipeline (AssetSync #5) ---------------------------------------------------------------
+
+MAT = "Assets/2DArt/UI/Inventory/M_ItemSlot_Settlement"
+
+
+def test_recooked_ignored_assets_are_not_exported():
+    ledger = L.Ledger(textures={GUN: synced("p1", "x1"),
+                                MAT: L.TextureRecord(pak_sha1="m1", status=L.IGNORED)})
+    scanned = {GUN: "p1", MAT: "m2"}
+    changes = L.diff(ledger, scanned)
+    assert changes.to_export == [] and changes.ignored == [MAT]
+    plan = L.plan_update(ledger, scanned, changes, {}, build="200", version=None)
+    assert ledger.textures[MAT].pak_sha1 == "m2" and ledger.textures[MAT].status == L.IGNORED
+    assert plan["ignored_recooked"] == 1 and plan["uploads"] == []
+
+
+def test_new_asset_without_image_is_ignored_not_reviewed():
+    ledger = L.Ledger(textures={GUN: synced("p1", "x1")})
+    new_icon = "Assets/2DArt/UI/Icons/ICON_New"
+    scanned = {GUN: "p1", MAT: "m1", new_icon: "n1"}
+    changes = L.diff(ledger, scanned)
+    plan = L.plan_update(ledger, scanned, changes, {new_icon: "y1"}, build="200", version=None,
+                         not_textures={MAT})
+    assert [r["texture"] for r in plan["review"]] == [new_icon]
+    assert plan["not_textures"] == [MAT] and ledger.textures[MAT].status == L.IGNORED
+    # Next build re-cooks it: still not exported.
+    assert L.diff(ledger, {**scanned, MAT: "m2"}).to_export == []
+
+
+def test_export_tolerates_partial_failure(tmp_path, monkeypatch):
+    import subprocess
+
+    import pytest
+
+    from assetsync import export
+
+    out = tmp_path / "export"
+
+    def fake_run(command, code):
+        (out / "Icarus" / "Content" / GUN).parent.mkdir(parents=True, exist_ok=True)
+        (out / "Icarus" / "Content" / f"{GUN}.png").write_bytes(b"png")
+        return subprocess.CompletedProcess(command, code)
+
+    monkeypatch.setattr(export.subprocess, "run", lambda c: fake_run(c, 2))
+    got = export.export_textures([GUN, MAT], ue4export=tmp_path / "x.exe", paks_dir=tmp_path, out_dir=out)
+    assert list(got) == [GUN]
+
+    monkeypatch.setattr(export.subprocess, "run", lambda c: fake_run(c, 1))
+    with pytest.raises(subprocess.CalledProcessError):
+        export.export_textures([GUN], ue4export=tmp_path / "x.exe", paks_dir=tmp_path, out_dir=out)
+
+
+def test_finalize_reads_per_pak_layout_from_data_pipeline(tmp_path, monkeypatch):
+    import json
+
+    from assetsync import cli
+
+    repo = tmp_path / "repo"
+    L.Ledger(textures={GUN: synced("p1", "x1"),
+                       MAT: L.TextureRecord(pak_sha1="m1", status=L.IGNORED)}).save(repo / "ledger")
+    # As staged by Data's prepare_consumer_finalizer_artifacts.py: <artifact_id>/<pak_slug>/...
+    partials = tmp_path / "finalizer-artifacts" / "assetsync-partials"
+    pak = partials / "pakchunk0_s20-windowsnoeditor-6ecf9af30740"
+    (pak / "export" / "Icarus" / "Content" / GUN).parent.mkdir(parents=True)
+    (pak / "export" / "Icarus" / "Content" / f"{GUN}.png").write_bytes(b"new png")
+    (pak / "scan.json").write_text(json.dumps({GUN: "p2", MAT: "m2"}))
+    (pak / "pixels.json").write_text(json.dumps({GUN: "x2"}))
+    (pak / "not_textures.json").write_text("[]")
+    (partials / "pakchunk0_s21-windowsnoeditor-0000").mkdir()  # a pak with nothing in scope
+
+    monkeypatch.setattr(cli, "REPO_ROOT", repo)
+    cli.main(["finalize", "--partials-dir", str(partials), "--build", "200", "--version", "V3.0.27.1"])
+
+    plan = json.loads((repo / "queue" / "200" / "plan.json").read_text(encoding="utf-8"))
+    assert [u["texture"] for u in plan["uploads"]] == [GUN]
+    assert (repo / "queue" / "200" / plan["uploads"][0]["png"]).read_bytes() == b"new png"
+    assert L.Ledger.load(repo / "ledger").textures[MAT].pak_sha1 == "m2"
+
+
+def test_finalize_without_processor_output_is_a_no_op(tmp_path, monkeypatch, capsys):
+    from assetsync import cli
+
+    monkeypatch.setattr(cli, "REPO_ROOT", tmp_path)
+    (tmp_path / "partials").mkdir()
+    cli.main(["finalize", "--partials-dir", str(tmp_path / "partials"), "--build", "200", "--version", "V1"])
+    assert "nothing to finalize" in capsys.readouterr().out
+    assert not (tmp_path / "queue").exists()
