@@ -333,11 +333,11 @@ def test_export_tolerates_partial_failure(tmp_path, monkeypatch):
         (out / "Icarus" / "Content" / f"{GUN}.png").write_bytes(b"png")
         return subprocess.CompletedProcess(command, code)
 
-    monkeypatch.setattr(export.subprocess, "run", lambda c: fake_run(c, 2))
+    monkeypatch.setattr(export.subprocess, "run", lambda c, check: fake_run(c, 2))
     got = export.export_textures([GUN, MAT], ue4export=tmp_path / "x.exe", paks_dir=tmp_path, out_dir=out)
     assert list(got) == [GUN]
 
-    monkeypatch.setattr(export.subprocess, "run", lambda c: fake_run(c, 1))
+    monkeypatch.setattr(export.subprocess, "run", lambda c, check: fake_run(c, 1))
     with pytest.raises(subprocess.CalledProcessError):
         export.export_textures([GUN], ue4export=tmp_path / "x.exe", paks_dir=tmp_path, out_dir=out)
 

@@ -34,7 +34,7 @@ def export_textures(
         "[Texture]\n" + "".join(f"{CONTENT_PREFIX}{t}\n" for t in textures), encoding="utf-8"
     )
     command = [str(ue4export), "--quiet", str(paks_dir), ENGINE_VERSION, str(asset_list), str(out_dir)]
-    result = subprocess.run(command)
+    result = subprocess.run(command, check=False)  # exit code checked below
     if result.returncode not in (0, PARTIAL_FAILURE):
         raise subprocess.CalledProcessError(result.returncode, command)
     exported = {}
