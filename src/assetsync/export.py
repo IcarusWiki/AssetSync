@@ -9,6 +9,9 @@ from . import CONTENT_PREFIX
 from .pixels import pixel_hash
 
 ENGINE_VERSION = "UE4_27"
+# Ue4Export exits 2 when it ran but "one or more assets failed to export" (e.g. a
+# material listed as a texture). The PNGs it did write are fine.
+PARTIAL_FAILURE = 2
 
 
 def export_textures(
@@ -18,7 +21,10 @@ def export_textures(
     paks_dir: Path,
     out_dir: Path,
 ) -> dict[str, Path]:
-    """Export ``textures`` (content-relative paths) and return the PNG written for each."""
+    """Export ``textures`` (content-relative paths) and return the PNG written for each.
+
+    Assets that produce no PNG are simply missing from the result.
+    """
     if not textures:
         return {}
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -27,10 +33,10 @@ def export_textures(
     asset_list.write_text(
         "[Texture]\n" + "".join(f"{CONTENT_PREFIX}{t}\n" for t in textures), encoding="utf-8"
     )
-    subprocess.run(
-        [str(ue4export), "--quiet", str(paks_dir), ENGINE_VERSION, str(asset_list), str(out_dir)],
-        check=True,
-    )
+    command = [str(ue4export), "--quiet", str(paks_dir), ENGINE_VERSION, str(asset_list), str(out_dir)]
+    result = subprocess.run(command, check=False)  # exit code checked below
+    if result.returncode not in (0, PARTIAL_FAILURE):
+        raise subprocess.CalledProcessError(result.returncode, command)
     exported = {}
     for texture in textures:
         png = out_dir / f"{CONTENT_PREFIX}{texture}.png"
