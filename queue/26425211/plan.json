@@ -1,0 +1,219 @@
+{
+ "build": "26425211",
+ "version": "V3.0.35.159586",
+ "uploads": [
+  {
+   "texture": "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Ape_Head",
+   "wiki_file": "T_ITEM_Ape_Head.png",
+   "category": "Assets/2DArt/UI/Items/Item_Icons/Carcasses",
+   "pixel_sha256": "7f7580a354a62a2af370c990fdf81c3a50911ca15abc033c47b46be2c361c7a4",
+   "png": "png/Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Ape_Head.png"
+  },
+  {
+   "texture": "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Bull_Head",
+   "wiki_file": "T_ITEM_Bull_Head.png",
+   "category": "Assets/2DArt/UI/Items/Item_Icons/Carcasses",
+   "pixel_sha256": "4ff5a870106947e092de335e88033054100598fe4db07882f3852dcb7a18f6a5",
+   "png": "png/Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Bull_Head.png"
+  },
+  {
+   "texture": "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Calf_Head",
+   "wiki_file": "T_ITEM_Calf_Head.png",
+   "category": "Assets/2DArt/UI/Items/Item_Icons/Carcasses",
+   "pixel_sha256": "d3e62c9011c004cde906835d2532efe63eba93a4282b3c4d5558aa83e5fbf13a",
+   "png": "png/Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Calf_Head.png"
+  },
+  {
+   "texture": "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Chicken_Head",
+   "wiki_file": "T_ITEM_Chicken_Head.png",
+   "category": "Assets/2DArt/UI/Items/Item_Icons/Carcasses",
+   "pixel_sha256": "2dc230194d2846cd7abf53ac97e2f48e3c3e2fb5944ece5072130fb507cf7cd2",
+   "png": "png/Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Chicken_Head.png"
+  },
+  {
+   "texture": "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Chicken_Head_A2",
+   "wiki_file": "T_ITEM_Chicken_Head_A2.png",
+   "category": "Assets/2DArt/UI/Items/Item_Icons/Carcasses",
+   "pixel_sha256": "b8130a76b445ca1c1d4d75165fe49c7f2be7cc118c2f0214fe6eb85cb2b30514",
+   "png": "png/Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Chicken_Head_A2.png"
+  },
+  {
+   "texture": "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Chicken_Head_A3",
+   "wiki_file": "T_ITEM_Chicken_Head_A3.png",
+   "category": "Assets/2DArt/UI/Items/Item_Icons/Carcasses",
+   "pixel_sha256": "9a2eeed61ea2f36e3a3d259424c7e34c78b00a035c705b53e5c8c747e291fe31",
+   "png": "png/Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Chicken_Head_A3.png"
+  },
+  {
+   "texture": "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Cow_Head",
+   "wiki_file": "T_ITEM_Cow_Head.png",
+   "category": "Assets/2DArt/UI/Items/Item_Icons/Carcasses",
+   "pixel_sha256": "a7e8d4230ee05ca45f7ac9889320650fff5c1fb372b07a7815bc162f6aa265b5",
+   "png": "png/Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Cow_Head.png"
+  },
+  {
+   "texture": "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Desert_Mammoth_Head",
+   "wiki_file": "T_ITEM_Desert_Mammoth_Head.png",
+   "category": "Assets/2DArt/UI/Items/Item_Icons/Carcasses",
+   "pixel_sha256": "d23325f6784126d7117597e058eac536d3ff16074e951dc3e1fdcb6ce41f06a5",
+   "png": "png/Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Desert_Mammoth_Head.png"
+  },
+  {
+   "texture": "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Flying_Tank_Head",
+   "wiki_file": "T_ITEM_Flying_Tank_Head.png",
+   "category": "Assets/2DArt/UI/Items/Item_Icons/Carcasses",
+   "pixel_sha256": "e5f796aa32b8712fd4a67ab0e532a7c6629f19edd78f41e1e328d02ecbda3aad",
+   "png": "png/Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Flying_Tank_Head.png"
+  },
+  {
+   "texture": "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Head_Dreadwing",
+   "wiki_file": "T_ITEM_Head_Dreadwing.png",
+   "category": "Assets/2DArt/UI/Items/Item_Icons/Carcasses",
+   "pixel_sha256": "055d09c15dbe1393ae050a8173408add948ce4d350be966744edec98e28348c3",
+   "png": "png/Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Head_Dreadwing.png"
+  },
+  {
+   "texture": "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Head_Elephant",
+   "wiki_file": "T_ITEM_Head_Elephant.png",
+   "category": "Assets/2DArt/UI/Items/Item_Icons/Carcasses",
+   "pixel_sha256": "452869dc6c20d6e8afe0173b7ab74b2d358a2640f6a22cfa598d7d6fbecec37b",
+   "png": "png/Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Head_Elephant.png"
+  },
+  {
+   "texture": "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Head_SulfurWorm",
+   "wiki_file": "T_ITEM_Head_SulfurWorm.png",
+   "category": "Assets/2DArt/UI/Items/Item_Icons/Carcasses",
+   "pixel_sha256": "fec90204ea072416be7bd142a81203edb50916e7e0628fccea873cf4c48f1d46",
+   "png": "png/Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Head_SulfurWorm.png"
+  },
+  {
+   "texture": "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Head_Terrenus",
+   "wiki_file": "T_ITEM_Head_Terrenus.png",
+   "category": "Assets/2DArt/UI/Items/Item_Icons/Carcasses",
+   "pixel_sha256": "5a9dd96253f46c5bcd7cd74b27412584a90768be8e07d8f82a11327594274f50",
+   "png": "png/Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Head_Terrenus.png"
+  },
+  {
+   "texture": "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_RockGolem_Juvie_Head",
+   "wiki_file": "T_ITEM_RockGolem_Juvie_Head.png",
+   "category": "Assets/2DArt/UI/Items/Item_Icons/Carcasses",
+   "pixel_sha256": "34174bbab23a4308167818ae6d547749dccf6cf74b6669de0e6dbeb72e603648",
+   "png": "png/Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_RockGolem_Juvie_Head.png"
+  },
+  {
+   "texture": "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Rock_Golem_Head",
+   "wiki_file": "T_ITEM_Rock_Golem_Head.png",
+   "category": "Assets/2DArt/UI/Items/Item_Icons/Carcasses",
+   "pixel_sha256": "607e993a31a208881b7a4756b9e3107a5edbe2934863828fdaab3242d8a404ef",
+   "png": "png/Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Rock_Golem_Head.png"
+  },
+  {
+   "texture": "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Rooster_Head",
+   "wiki_file": "T_ITEM_Rooster_Head.png",
+   "category": "Assets/2DArt/UI/Items/Item_Icons/Carcasses",
+   "pixel_sha256": "512e221b9e0511b326ad34d14a7c2bf421066430690e671d76676aa9d789a790",
+   "png": "png/Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Rooster_Head.png"
+  },
+  {
+   "texture": "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Serum_Bull",
+   "wiki_file": "T_ITEM_Serum_Bull.png",
+   "category": "Assets/2DArt/UI/Items/Item_Icons/Carcasses",
+   "pixel_sha256": "65a05a208d9bab3427a7d1443a51efe2b8d62f68af5572288d5140cc9acadbd6",
+   "png": "png/Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Serum_Bull.png"
+  },
+  {
+   "texture": "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Serum_Tundra_Monkey",
+   "wiki_file": "T_ITEM_Serum_Tundra_Monkey.png",
+   "category": "Assets/2DArt/UI/Items/Item_Icons/Carcasses",
+   "pixel_sha256": "038830aba0a5c091cfd0ed6f129831779bf3bb39bd66ea5210fea82759d62d69",
+   "png": "png/Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Serum_Tundra_Monkey.png"
+  },
+  {
+   "texture": "Assets/2DArt/UI/Items/Item_Icons/Deployables/ITEM_Interior_Wood_Cupboard",
+   "wiki_file": "ITEM_Interior_Wood_Cupboard.png",
+   "category": "Assets/2DArt/UI/Items/Item_Icons/Deployables",
+   "pixel_sha256": "100f7d17442296a4e6af0a6a52818d56302594c6b803dfbc9ed7e1990b7b37e6",
+   "png": "png/Assets/2DArt/UI/Items/Item_Icons/Deployables/ITEM_Interior_Wood_Cupboard.png"
+  },
+  {
+   "texture": "Assets/2DArt/UI/Items/Item_Icons/Deployables/ITEM_Interior_Wood_Cupboard_Small",
+   "wiki_file": "ITEM_Interior_Wood_Cupboard_Small.png",
+   "category": "Assets/2DArt/UI/Items/Item_Icons/Deployables",
+   "pixel_sha256": "64e3910dc73fad570dd30884469737589d9eaf89eaf607da18c1596bedaad7e7",
+   "png": "png/Assets/2DArt/UI/Items/Item_Icons/Deployables/ITEM_Interior_Wood_Cupboard_Small.png"
+  },
+  {
+   "texture": "Assets/2DArt/UI/Items/Item_Icons/Deployables/ITEM_Kit_Metal_Cupboard",
+   "wiki_file": "ITEM_Kit_Metal_Cupboard.png",
+   "category": "Assets/2DArt/UI/Items/Item_Icons/Deployables",
+   "pixel_sha256": "965145c207199268832e218677675c0e06585606bd97904833aa438d3586f171",
+   "png": "png/Assets/2DArt/UI/Items/Item_Icons/Deployables/ITEM_Kit_Metal_Cupboard.png"
+  },
+  {
+   "texture": "Assets/2DArt/UI/Items/Item_Icons/Deployables/ITEM_Kit_Wood_Cupboard",
+   "wiki_file": "ITEM_Kit_Wood_Cupboard.png",
+   "category": "Assets/2DArt/UI/Items/Item_Icons/Deployables",
+   "pixel_sha256": "2a40415de8d2496b361d142d52cbe40e78e608a7ade0d45488d25837e2ea5e59",
+   "png": "png/Assets/2DArt/UI/Items/Item_Icons/Deployables/ITEM_Kit_Wood_Cupboard.png"
+  },
+  {
+   "texture": "Assets/2DArt/UI/Items/Item_Icons/Deployables/ITEM_Metal_Cupboard_Small",
+   "wiki_file": "ITEM_Metal_Cupboard_Small.png",
+   "category": "Assets/2DArt/UI/Items/Item_Icons/Deployables",
+   "pixel_sha256": "ee8ea041747381ea18f70142bc597acb524e0c8c3b9d74f9d1caecb255757a24",
+   "png": "png/Assets/2DArt/UI/Items/Item_Icons/Deployables/ITEM_Metal_Cupboard_Small.png"
+  },
+  {
+   "texture": "Assets/2DArt/UI/Items/Item_Icons/Deployables/ITEM_Wood_Cupboard_Small",
+   "wiki_file": "ITEM_Wood_Cupboard_Small.png",
+   "category": "Assets/2DArt/UI/Items/Item_Icons/Deployables",
+   "pixel_sha256": "fae4ddcb01aa3d5d6202719ef31c8474e4937a3746b4dee135f4025f0e3cfe0e",
+   "png": "png/Assets/2DArt/UI/Items/Item_Icons/Deployables/ITEM_Wood_Cupboard_Small.png"
+  }
+ ],
+ "historical": [
+  {
+   "texture": "Assets/2DArt/UI/FieldGuide/Dioramas/T_Bestiary_Diorama_Forest",
+   "wiki_file": "T_Bestiary_Diorama_Forest.png",
+   "category": "Assets/2DArt/UI/FieldGuide/Dioramas",
+   "pixel_sha256": "6b69e8c707110bbe612a3b5de4e5f1c34ef581afdffe2ccd04e3548eb4afe07c"
+  }
+ ],
+ "review": [
+  {
+   "texture": "Assets/2DArt/UI/HUD/WeatherCards/Lightning_Light",
+   "wiki_file": "Lightning_Light.png",
+   "category": "Assets/2DArt/UI/HUD/WeatherCards",
+   "pixel_sha256": "48b3827350407073610d5e8821c8301c4dbce476a8a22d1dd50a58a83b3a9d83",
+   "png": "png/Assets/2DArt/UI/HUD/WeatherCards/Lightning_Light.png"
+  },
+  {
+   "texture": "Assets/2DArt/UI/Icons/T_ICON_WarningBorder",
+   "wiki_file": "T_ICON_WarningBorder.png",
+   "category": "Assets/2DArt/UI/Icons",
+   "pixel_sha256": "d91ef06a0c1655a98f2837b11bea30e98f593742c27d8e8039ea4c7d953c5f86",
+   "png": "png/Assets/2DArt/UI/Icons/T_ICON_WarningBorder.png"
+  },
+  {
+   "texture": "Assets/2DArt/UI/Icons/Weather/icon-weather-cloud3",
+   "wiki_file": "icon-weather-cloud3.png",
+   "category": "Assets/2DArt/UI/Icons/Weather",
+   "pixel_sha256": "37870a71bc480b6c0d2afaaf24fe3eb1f0da7019e613e178be2f5d47c0439932",
+   "png": "png/Assets/2DArt/UI/Icons/Weather/icon-weather-cloud3.png"
+  },
+  {
+   "texture": "Assets/2DArt/UI/Items/Item_Icons/UseableItems/T_ITEM_Workshop_Lantern",
+   "wiki_file": "T_ITEM_Workshop_Lantern.png",
+   "category": "Assets/2DArt/UI/Items/Item_Icons/UseableItems",
+   "pixel_sha256": "3955eb715ed90bee9095c04b9c39e9c9c8b689f502f58b2fe9bcc018ae96c4c7",
+   "png": "png/Assets/2DArt/UI/Items/Item_Icons/UseableItems/T_ITEM_Workshop_Lantern.png"
+  }
+ ],
+ "hash_only": [],
+ "not_textures": [
+  "Assets/2DArt/UI/Inventory/M_ItemSlot_Settlement",
+  "Assets/2DArt/UI/Inventory/M_ItemSlot_Settlement_Hovered"
+ ],
+ "ignored_recooked": 2,
+ "unchanged": 7776
+}
