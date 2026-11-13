@@ -1,0 +1,47 @@
+{
+ "build": "26613838",
+ "version": "V3.0.35.159586",
+ "uploads": [],
+ "historical": [
+  {
+   "texture": "Assets/2DArt/UI/Items/Item_Icons/Voxels/T_ITEM_Cobalt_Ore",
+   "wiki_file": "T_ITEM_Cobalt_Ore.png",
+   "category": "Assets/2DArt/UI/Items/Item_Icons/Voxels",
+   "pixel_sha256": "785388696d61f76c9326e68c0898fe054101aab4b06cb29b6c0653d199af6f96"
+  }
+ ],
+ "review": [
+  {
+   "texture": "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Serum_ArcticMammoth",
+   "wiki_file": "T_ITEM_Serum_ArcticMammoth.png",
+   "category": "Assets/2DArt/UI/Items/Item_Icons/Carcasses",
+   "pixel_sha256": "419f571e70a5f41cdf892202fbbfbb589d27fb1035285a6a996136eac72906c5",
+   "png": "png/Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Serum_ArcticMammoth.png"
+  },
+  {
+   "texture": "Assets/2DArt/UI/Items/Item_Icons/Deployables/T_ITEM_Captured_BearCub",
+   "wiki_file": "T_ITEM_Captured_BearCub.png",
+   "category": "Assets/2DArt/UI/Items/Item_Icons/Deployables",
+   "pixel_sha256": "237d1282f321beffccbb7673e64b83c95ac3b86b747416c0b86420024d15dfdb",
+   "png": "png/Assets/2DArt/UI/Items/Item_Icons/Deployables/T_ITEM_Captured_BearCub.png"
+  },
+  {
+   "texture": "Assets/2DArt/UI/Items/Item_Icons/Resources/T_ITEM_Cobalt_Ore",
+   "wiki_file": "T_ITEM_Cobalt_Ore.png",
+   "category": "Assets/2DArt/UI/Items/Item_Icons/Resources",
+   "pixel_sha256": "2fc1bbecaa8001b1e6e2656f78d3e268f36a1b7a16dedd17b38da503a8b493e7",
+   "png": "png/Assets/2DArt/UI/Items/Item_Icons/Resources/T_ITEM_Cobalt_Ore.png"
+  },
+  {
+   "texture": "Assets/2DArt/UI/Talents/Companion/T_Talent_Buffalo_ExtraBulky",
+   "wiki_file": "T_Talent_Buffalo_ExtraBulky.png",
+   "category": "Assets/2DArt/UI/Talents/Companion",
+   "pixel_sha256": "488936b0bfba03a2060154ec25c6fbcd4be12807991b5f018405f748b921ed6e",
+   "png": "png/Assets/2DArt/UI/Talents/Companion/T_Talent_Buffalo_ExtraBulky.png"
+  }
+ ],
+ "hash_only": [],
+ "not_textures": [],
+ "ignored_recooked": 0,
+ "unchanged": 7807
+}

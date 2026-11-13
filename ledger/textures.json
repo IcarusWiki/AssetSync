@@ -37679,6 +37679,16 @@
   "wiki_file": "T_ITEM_Sandwyrm_Queen_Head.png",
   "wiki_pixel_sha256": "0366c6abfbe63d475bacb2587c560b890abed7e3170848fe261aafeaf83f0b7a"
  },
+ "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Serum_ArcticMammoth": {
+  "first_seen": "26613838",
+  "last_changed": "26613838",
+  "pak_sha1": "aa0fc30e263719c8f9904a810f814ce9a9a1943e",
+  "pixel_sha256": "419f571e70a5f41cdf892202fbbfbb589d27fb1035285a6a996136eac72906c5",
+  "removed_in": null,
+  "status": "review",
+  "wiki_file": null,
+  "wiki_pixel_sha256": null
+ },
  "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Serum_Boar": {
   "first_seen": "25956278",
   "last_changed": "25956278",
@@ -46078,6 +46088,16 @@
   "status": "synced",
   "wiki_file": "T_ITEM_Calf_Trophy.png",
   "wiki_pixel_sha256": "a01f246d40f20fa52080eda7d004e1c75d56f0b0a234c9d0070887a626ef5783"
+ },
+ "Assets/2DArt/UI/Items/Item_Icons/Deployables/T_ITEM_Captured_BearCub": {
+  "first_seen": "26613838",
+  "last_changed": "26613838",
+  "pak_sha1": "703da9644e12368f5eb484293031baad4f3026a8",
+  "pixel_sha256": "237d1282f321beffccbb7673e64b83c95ac3b86b747416c0b86420024d15dfdb",
+  "removed_in": null,
+  "status": "review",
+  "wiki_file": null,
+  "wiki_pixel_sha256": null
  },
  "Assets/2DArt/UI/Items/Item_Icons/Deployables/T_ITEM_Cat_Bowl_Food": {
   "first_seen": "25956278",
@@ -60909,6 +60929,16 @@
   "wiki_file": "T_ITEM_Cat_Boss_Whiskers.png",
   "wiki_pixel_sha256": "12febff58c2f4f998bffd84ef63bc4a8f3a73235250d00558aad562b1d731b89"
  },
+ "Assets/2DArt/UI/Items/Item_Icons/Resources/T_ITEM_Cobalt_Ore": {
+  "first_seen": "26613838",
+  "last_changed": "26613838",
+  "pak_sha1": "1fecb2809184354051b341d01e43e64d8d35b5d2",
+  "pixel_sha256": "2fc1bbecaa8001b1e6e2656f78d3e268f36a1b7a16dedd17b38da503a8b493e7",
+  "removed_in": null,
+  "status": "review",
+  "wiki_file": null,
+  "wiki_pixel_sha256": null
+ },
  "Assets/2DArt/UI/Items/Item_Icons/Resources/T_ITEM_Cold_Steel_Ingot": {
   "first_seen": "25956278",
   "last_changed": "25956278",
@@ -65374,8 +65404,8 @@
   "last_changed": "25956278",
   "pak_sha1": "43169d57b120216ded338379ba58953d9397b699",
   "pixel_sha256": "785388696d61f76c9326e68c0898fe054101aab4b06cb29b6c0653d199af6f96",
-  "removed_in": null,
-  "status": "synced",
+  "removed_in": "V3.0.35.159586",
+  "status": "removed",
   "wiki_file": "T_ITEM_Cobalt_Ore.png",
   "wiki_pixel_sha256": "785388696d61f76c9326e68c0898fe054101aab4b06cb29b6c0653d199af6f96"
  },
@@ -71678,6 +71708,16 @@
   "status": "synced",
   "wiki_file": "T_Talent_Buffalo_DamageReduction.png",
   "wiki_pixel_sha256": "6bb1a15a728c03660ad41fd4dec680ebe9a61603d4785a4a22d4939b61a07e5e"
+ },
+ "Assets/2DArt/UI/Talents/Companion/T_Talent_Buffalo_ExtraBulky": {
+  "first_seen": "26613838",
+  "last_changed": "26613838",
+  "pak_sha1": "7d57a76c0fbc115b5ec996cb8b38a03abcffc7f6",
+  "pixel_sha256": "488936b0bfba03a2060154ec25c6fbcd4be12807991b5f018405f748b921ed6e",
+  "removed_in": null,
+  "status": "review",
+  "wiki_file": null,
+  "wiki_pixel_sha256": null
  },
  "Assets/2DArt/UI/Talents/Companion/T_Talent_Buffalo_ExtraCarry": {
   "first_seen": "25956278",
