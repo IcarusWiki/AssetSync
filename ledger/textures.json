@@ -37684,8 +37684,8 @@
   "last_changed": "26613838",
   "pak_sha1": "aa0fc30e263719c8f9904a810f814ce9a9a1943e",
   "pixel_sha256": "419f571e70a5f41cdf892202fbbfbb589d27fb1035285a6a996136eac72906c5",
-  "removed_in": null,
-  "status": "review",
+  "removed_in": "V3.0.37.160033",
+  "status": "removed",
   "wiki_file": null,
   "wiki_pixel_sha256": null
  },
@@ -37838,6 +37838,16 @@
   "status": "synced",
   "wiki_file": "T_ITEM_Serum_Wolf.png",
   "wiki_pixel_sha256": "6c913ff7fe82bc0ac8c2000c643165aa57f931af716b905f94bf60c894bfe406"
+ },
+ "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Serum_WoolyMammoth": {
+  "first_seen": "26636089",
+  "last_changed": "26636089",
+  "pak_sha1": "c37c90e6fd93a8de6abc3ec1b1b1319a44e3fdce",
+  "pixel_sha256": "0f3e77ab3f0fb1c4e5b25efdbdc62b30f79582ea0b53a1c18cbcdbd55d2a2e4b",
+  "removed_in": null,
+  "status": "review",
+  "wiki_file": null,
+  "wiki_pixel_sha256": null
  },
  "Assets/2DArt/UI/Items/Item_Icons/Carcasses/T_ITEM_Sheep_Head": {
   "first_seen": "25956278",
@@ -71099,6 +71109,16 @@
   "wiki_file": "Talent_Building_WoodStorage2.png",
   "wiki_pixel_sha256": "a6118ed441db8c46b5b39ccd324df79e14ac94d314c67355f5a9f48f451fb828"
  },
+ "Assets/2DArt/UI/Talents/Companion/T_TALENT_Base_Bear": {
+  "first_seen": "26636089",
+  "last_changed": "26636089",
+  "pak_sha1": "6f75e4e56ea6501ab2e9cf908aee7fa32ad40098",
+  "pixel_sha256": "799aba4156495458cddf3924cd234fad58d81a4f49900769406e29326a29024c",
+  "removed_in": null,
+  "status": "review",
+  "wiki_file": null,
+  "wiki_pixel_sha256": null
+ },
  "Assets/2DArt/UI/Talents/Companion/T_TALENT_Base_Pig": {
   "first_seen": "25956278",
   "last_changed": "25956278",
@@ -71108,6 +71128,56 @@
   "status": "synced",
   "wiki_file": "T_TALENT_Base_Pig.png",
   "wiki_pixel_sha256": "d93ee1aeff5728aa4eb996d1f39590d40b1fc0b69094c58b9f91638c2f0efc73"
+ },
+ "Assets/2DArt/UI/Talents/Companion/T_TALENT_Bulwark": {
+  "first_seen": "26636089",
+  "last_changed": "26636089",
+  "pak_sha1": "6cd7c49d3d263510e103cd801a8249c12f8e3479",
+  "pixel_sha256": "7561082f9c957e4dd04d8e12f22e7b79e0f07615bd2fe9098207ce2c7606698d",
+  "removed_in": null,
+  "status": "review",
+  "wiki_file": null,
+  "wiki_pixel_sha256": null
+ },
+ "Assets/2DArt/UI/Talents/Companion/T_TALENT_ConcussiveSwipe": {
+  "first_seen": "26636089",
+  "last_changed": "26636089",
+  "pak_sha1": "6413e4922c9277d8208bd0412fe0ce0fc7a08661",
+  "pixel_sha256": "1bc3175f3ebbc75cccaa102b88a021e397f8fe5accfc05e5fb9ac2f22f228bee",
+  "removed_in": null,
+  "status": "review",
+  "wiki_file": null,
+  "wiki_pixel_sha256": null
+ },
+ "Assets/2DArt/UI/Talents/Companion/T_TALENT_Gorge": {
+  "first_seen": "26636089",
+  "last_changed": "26636089",
+  "pak_sha1": "d130f1e3f3ee624dc5edf2a1957949f2c80889f1",
+  "pixel_sha256": "24bac372e1d79bb5dfcf6f57a443f40ffa3ecd7b072eb0f1837331980b36110f",
+  "removed_in": null,
+  "status": "review",
+  "wiki_file": null,
+  "wiki_pixel_sha256": null
+ },
+ "Assets/2DArt/UI/Talents/Companion/T_TALENT_HeavyPaw": {
+  "first_seen": "26636089",
+  "last_changed": "26636089",
+  "pak_sha1": "d2022ffabe50f2f144cfd0fa93afccf1e2c78a2c",
+  "pixel_sha256": "b6f639b48a03f9cac34424137bb6797c65497505e1cef3bf36c597ee8582eae5",
+  "removed_in": null,
+  "status": "review",
+  "wiki_file": null,
+  "wiki_pixel_sha256": null
+ },
+ "Assets/2DArt/UI/Talents/Companion/T_TALENT_PrimeTarget": {
+  "first_seen": "26636089",
+  "last_changed": "26636089",
+  "pak_sha1": "c8e857069fc441fd39032fdcb376bbbde61b7a1e",
+  "pixel_sha256": "c6c1bea8ebab5746a29cd3a709eb9927eef3a5baaba2eb1c4163281722cfc0cb",
+  "removed_in": null,
+  "status": "review",
+  "wiki_file": null,
+  "wiki_pixel_sha256": null
  },
  "Assets/2DArt/UI/Talents/Companion/T_Talent_Base_ArcticMoa": {
   "first_seen": "25956278",
@@ -71714,8 +71784,8 @@
   "last_changed": "26613838",
   "pak_sha1": "7d57a76c0fbc115b5ec996cb8b38a03abcffc7f6",
   "pixel_sha256": "488936b0bfba03a2060154ec25c6fbcd4be12807991b5f018405f748b921ed6e",
-  "removed_in": null,
-  "status": "review",
+  "removed_in": "V3.0.37.160033",
+  "status": "removed",
   "wiki_file": null,
   "wiki_pixel_sha256": null
  },
