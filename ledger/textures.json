@@ -13035,9 +13035,10 @@
   "pak_sha1": "bc2c8077c526f6fd1a89adb927dc16b93343851d",
   "pixel_sha256": "b93e0a77505629facf5e188a1759419a8b92461c89f434e58d349c6dc382a1d2",
   "removed_in": null,
-  "status": "synced",
-  "wiki_file": "Icon_WeightCapacity.png",
-  "wiki_pixel_sha256": "b93e0a77505629facf5e188a1759419a8b92461c89f434e58d349c6dc382a1d2"
+  "review_reason": "name clash with `Assets/2DArt/UI/Icons/Icon_WeightCapacity` (that one is on the wiki); upload under another name with --upload --as",
+  "status": "review",
+  "wiki_file": null,
+  "wiki_pixel_sha256": null
  },
  "Assets/2DArt/UI/Icons/ArmorAttachments/T_ATTACHMENT_ArmourComfort": {
   "first_seen": "25956278",
@@ -17485,9 +17486,10 @@
   "pak_sha1": "f03a497f379e042eb578af3f154c6b11cc428b40",
   "pixel_sha256": "de8883f2e57ec6aee17dd3eda4b6ffa0ffb8a2efc06ad21d9647eb706d4c4b69",
   "removed_in": null,
-  "status": "synced",
-  "wiki_file": "T_Icon_Map_NPC_Farmer.png",
-  "wiki_pixel_sha256": "de8883f2e57ec6aee17dd3eda4b6ffa0ffb8a2efc06ad21d9647eb706d4c4b69"
+  "review_reason": "name clash with `Assets/2DArt/UI/Icons/T_Icon_Map_NPC_Farmer` (that one is on the wiki); upload under another name with --upload --as",
+  "status": "review",
+  "wiki_file": null,
+  "wiki_pixel_sha256": null
  },
  "Assets/2DArt/UI/Icons/MapIcons/T_Icon_Map_NPC_Fisher": {
   "first_seen": "25956278",
@@ -17495,9 +17497,10 @@
   "pak_sha1": "6190c7af81b51598d8ce95f8f1f1d27fde27366a",
   "pixel_sha256": "b5b15852104fb12f2d6d371c0eeef1f612e9f506fa2b2836a787a330b78cf81d",
   "removed_in": null,
-  "status": "synced",
-  "wiki_file": "T_Icon_Map_NPC_Fisher.png",
-  "wiki_pixel_sha256": "b5b15852104fb12f2d6d371c0eeef1f612e9f506fa2b2836a787a330b78cf81d"
+  "review_reason": "name clash with `Assets/2DArt/UI/Icons/T_Icon_Map_NPC_Fisher` (that one is on the wiki); upload under another name with --upload --as",
+  "status": "review",
+  "wiki_file": null,
+  "wiki_pixel_sha256": null
  },
  "Assets/2DArt/UI/Icons/MapIcons/T_Icon_Map_NPC_Hunter": {
   "first_seen": "25956278",
@@ -17505,9 +17508,10 @@
   "pak_sha1": "7ead2384022f0cc51577cbe885dff469ed9d4292",
   "pixel_sha256": "23e813f89e4770f24cb4fe58c7876481d3efb1a4068a2efa5994ab2d6f7bedce",
   "removed_in": null,
-  "status": "synced",
-  "wiki_file": "T_Icon_Map_NPC_Hunter.png",
-  "wiki_pixel_sha256": "23e813f89e4770f24cb4fe58c7876481d3efb1a4068a2efa5994ab2d6f7bedce"
+  "review_reason": "name clash with `Assets/2DArt/UI/Icons/T_Icon_Map_NPC_Hunter` (that one is on the wiki); upload under another name with --upload --as",
+  "status": "review",
+  "wiki_file": null,
+  "wiki_pixel_sha256": null
  },
  "Assets/2DArt/UI/Icons/MapIcons/T_Icon_Map_NPC_Norex": {
   "first_seen": "25956278",
@@ -17515,9 +17519,10 @@
   "pak_sha1": "43714c5dbd306caaf7451f9aec062c925eeeda60",
   "pixel_sha256": "f4eb9d03101bd5f5b42d3fa0046034e190ab4d5eb5ed640eb5d8146a8d85e59c",
   "removed_in": null,
-  "status": "synced",
-  "wiki_file": "T_Icon_Map_NPC_Norex.png",
-  "wiki_pixel_sha256": "f4eb9d03101bd5f5b42d3fa0046034e190ab4d5eb5ed640eb5d8146a8d85e59c"
+  "review_reason": "name clash with `Assets/2DArt/UI/Icons/T_Icon_Map_NPC_Norex` (that one is on the wiki); upload under another name with --upload --as",
+  "status": "review",
+  "wiki_file": null,
+  "wiki_pixel_sha256": null
  },
  "Assets/2DArt/UI/Icons/MapIcons/T_Icon_Map_Prospector": {
   "first_seen": "25956278",

@@ -21,7 +21,22 @@ AssetSync
   ignored, because exporters disagree about it.
 - **Re-cooked but identical** textures (new pak bytes, same pixels) are recorded and not uploaded.
 - **Changed** textures are uploaded over `File:<TextureName>.png`. MediaWiki keeps the old version in the file history.
-- **New** textures are never uploaded automatically. They're listed in a GitHub issue for review.
+- **New** textures are uploaded as `File:<TextureName>.png`, but only when nothing is in the way. The upload
+  runs with MediaWiki's warnings on. A texture goes to the review issue instead when:
+  - another texture already has, or wants, the same file name (e.g. `Icons/T_Icon_Map_NPC_Farmer` and
+    `Icons/MapIcons/T_Icon_Map_NPC_Farmer`);
+  - the file already exists on the wiki (e.g. an editor uploaded it by hand);
+  - a file of that name was deleted before;
+  - the same image is on the wiki under a name that isn't a game texture.
+
+  An identical image under another *texture's* name doesn't block the upload, since every texture gets its own file.
+  The dry run shows which new files already exist on the wiki. A texture waiting for its upload is exported again on
+  every run until the upload lands.
+- **Review** decisions: `python -m assetsync resolve <texture> --upload [--as NAME.png] | --adopt | --ignore`, then
+  commit `ledger/`.
+  - `--upload` overwrites, or uploads under the `--as` name.
+  - `--adopt` takes the existing wiki file as this texture.
+  - `--ignore` never uploads it.
 - **Removed** textures get `{{Historical content|Removed in [[Changelog:V…]]}}`. Files are never deleted.
 - **Display-name redirects** `File:<PREFIX>_<DisplayName>.png` → `File:<TextureName>.png`:
   - `ITEM_` for every `D_Itemable` row (keeps `{{Item icon}}` working);

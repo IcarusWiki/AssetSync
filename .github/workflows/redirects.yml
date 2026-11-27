@@ -58,7 +58,12 @@ jobs:
           git add -A queue
           if ! git diff --cached --quiet; then
             git commit -m "Queue display-name redirects ($(date -u +%Y-%m-%d))"
-            git push
+            # The Data finalizer may have pushed to main meanwhile (2026-11-20 push was rejected).
+            for attempt in 1 2 3; do
+              git pull --rebase origin main && git push && break
+              [ "$attempt" = 3 ] && exit 1
+              sleep 10
+            done
           fi
 
   publish:

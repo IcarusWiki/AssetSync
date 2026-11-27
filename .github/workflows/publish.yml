@@ -77,7 +77,12 @@ jobs:
           git add -A ledger queue
           if ! git diff --cached --quiet; then
             git commit -m "Publish assets ($(date -u +%Y-%m-%d)) [skip ci]"
-            git push
+            # Another workflow may have pushed to main meanwhile; replay this commit on top.
+            for attempt in 1 2 3; do
+              git pull --rebase origin main && git push && break
+              [ "$attempt" = 3 ] && exit 1
+              sleep 10
+            done
           fi
       - name: Open review issue for new textures and redirects
         if: hashFiles('review.md') != ''

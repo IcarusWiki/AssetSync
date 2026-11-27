@@ -12,9 +12,11 @@ from dataclasses import asdict, dataclass, field
 from pathlib import Path, PurePosixPath
 
 SYNCED = "synced"      # on the wiki under its texture name; kept up to date
-REVIEW = "review"      # in the game but not (knowingly) on the wiki; needs a human decision
+# In the game but not on the wiki yet. Without a review_reason it is uploaded on the next
+# publish if the wiki has nothing under its name; with one, a human decides (`resolve`).
+REVIEW = "review"
 REMOVED = "removed"    # gone from the game; wiki file kept and marked historical
-IGNORED = "ignored"    # reviewed and deliberately not uploaded
+IGNORED = "ignored"    # not a texture, or reviewed and deliberately not uploaded
 
 
 @dataclass
@@ -27,6 +29,7 @@ class TextureRecord:
     first_seen: str = ""
     last_changed: str = ""
     removed_in: str | None = None
+    review_reason: str | None = None  # why a human has to decide; None = upload automatically
 
 
 @dataclass
@@ -57,7 +60,13 @@ class Ledger:
             text = json.dumps(data, indent=1, sort_keys=True, ensure_ascii=False) + "\n"
             (root / name).write_text(text, encoding="utf-8", newline="\n")
 
-        write("textures.json", {k: asdict(v) for k, v in self.textures.items()})
+        def record(r: TextureRecord) -> dict:
+            data = asdict(r)
+            if data["review_reason"] is None:
+                del data["review_reason"]  # keep the 7,800-row file free of an always-empty field
+            return data
+
+        write("textures.json", {k: record(v) for k, v in self.textures.items()})
         write("redirects.json", self.redirects)
         write("redirect_review.json", self.redirect_review)
         write("state.json", self.state)
@@ -70,6 +79,31 @@ def synced_textures(ledger: Ledger) -> set[str]:
 
 def wiki_file_name(texture: str) -> str:
     return PurePosixPath(texture).name + ".png"
+
+
+def title_key(name: str) -> str:
+    """How MediaWiki sees a file name: underscores are spaces, the first letter is capitalised."""
+    name = " ".join(name.replace("_", " ").split())
+    return name[:1].upper() + name[1:]
+
+
+def target_name(texture: str, record: TextureRecord) -> str:
+    return record.wiki_file or wiki_file_name(texture)
+
+
+def is_pending_new(record: TextureRecord) -> bool:
+    return record.status == REVIEW and not record.review_reason
+
+
+def pending_export(ledger: Ledger) -> list[str]:
+    """Textures whose PNG a publish still needs although the pak may not have changed:
+    new ones waiting for their first upload, and synced ones whose upload never landed."""
+    return sorted(
+        t
+        for t, r in ledger.textures.items()
+        if is_pending_new(r)
+        or (r.status == SYNCED and r.pixel_sha256 and r.pixel_sha256 != r.wiki_pixel_sha256)
+    )
 
 
 def category_for(texture: str) -> str:
@@ -121,10 +155,15 @@ def plan_update(
 ) -> dict:
     """Apply a scan to the ledger and return the publish plan.
 
-    ``pixels`` holds decoded pixel hashes for every changed or added texture.
-    ``not_textures`` lists exported assets that produced no image; new ones are ignored.
+    ``pixels`` holds decoded pixel hashes for every exported texture (changed, added, and
+    those in ``pending_export``). ``not_textures`` lists exported assets that produced no
+    image; new ones are ignored.
+
+    New textures go to ``new`` and are uploaded unless the wiki already has a file by that
+    name (checked at publish time). Two textures that would share a wiki file name go to
+    ``review`` instead.
     """
-    hash_only, review, historical, ignored_new = [], [], [], []
+    hash_only, historical, ignored_new = [], [], []
     for texture in changes.ignored:
         ledger.textures[texture].pak_sha1 = scanned[texture]
     for texture in changes.changed:
@@ -150,7 +189,8 @@ def plan_update(
             first_seen=previous.first_seen if previous else build,
             last_changed=build,
         )
-        (ignored_new if not_texture else review).append(texture)
+        if not_texture:
+            ignored_new.append(texture)
     for texture in changes.removed:
         record = ledger.textures[texture]
         record.status = REMOVED
@@ -158,28 +198,58 @@ def plan_update(
         if record.wiki_file:
             historical.append(texture)
 
-    uploads = [
-        texture
-        for texture, record in sorted(ledger.textures.items())
-        if record.status == SYNCED and record.pixel_sha256 and record.pixel_sha256 != record.wiki_pixel_sha256
-    ]
+    # Pending new textures re-exported this run (their pak may be unchanged).
+    for texture, record in ledger.textures.items():
+        if is_pending_new(record) and pixels.get(texture):
+            record.pixel_sha256 = pixels[texture]
+
+    # Who holds, or is about to take, each wiki file name.
+    claims: dict[str, list[str]] = {}
+    for texture, record in sorted(ledger.textures.items()):
+        if record.status == SYNCED or is_pending_new(record):
+            claims.setdefault(title_key(target_name(texture, record)), []).append(texture)
+
+    review, new = [], []
+    for texture, record in sorted(ledger.textures.items()):
+        if not is_pending_new(record):
+            continue
+        others = [t for t in claims[title_key(target_name(texture, record))] if t != texture]
+        if others:
+            record.review_reason = "name clash with " + ", ".join(f"`{t}`" for t in others)
+            review.append(texture)
+        elif record.pixel_sha256:
+            new.append(texture)
+
+    # Two synced records on one wiki file would overwrite each other; upload neither.
+    uploads, name_conflicts = [], []
+    for texture, record in sorted(ledger.textures.items()):
+        if record.status == SYNCED and record.pixel_sha256 and record.pixel_sha256 != record.wiki_pixel_sha256:
+            synced_owners = [
+                t for t in claims[title_key(target_name(texture, record))] if ledger.textures[t].status == SYNCED
+            ]
+            (name_conflicts if len(synced_owners) > 1 else uploads).append(texture)
     ledger.state.update({"build": build, "version": version or ""})
 
     def entry(texture: str) -> dict:
         record = ledger.textures[texture]
-        return {
+        item = {
             "texture": texture,
-            "wiki_file": record.wiki_file or wiki_file_name(texture),
+            "wiki_file": target_name(texture, record),
             "category": category_for(texture),
             "pixel_sha256": record.pixel_sha256,
         }
+        if record.review_reason:
+            item["reason"] = record.review_reason
+        return item
 
     return {
         "build": build,
         "version": version,
         "uploads": [entry(t) for t in uploads],
+        "new": [entry(t) for t in new],
         "historical": [entry(t) for t in historical],
         "review": [entry(t) for t in review],
+        "name_conflicts": [entry(t) for t in name_conflicts],
         "hash_only": hash_only,
         "not_textures": ignored_new,
         "ignored_recooked": len(changes.ignored),
