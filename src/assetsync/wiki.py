@@ -431,7 +431,14 @@ class MediaWikiClient:
         comment: str,
         text: str,
         content_type: str | None = None,
-    ) -> None:
+        ignore_warnings: bool = True,
+    ) -> dict:
+        """Upload ``file_bytes`` and return MediaWiki's ``upload`` result.
+
+        With ``ignore_warnings=False`` a file that already exists, duplicates another file,
+        or was deleted is *not* published: the result is ``"Warning"`` and ``warnings``
+        says why, for the caller to decide.
+        """
         if not self.csrf_token:
             raise MediaWikiError("Cannot upload wiki file before calling login().")
 
@@ -443,7 +450,7 @@ class MediaWikiClient:
         payload = {
             "action": "upload",
             "filename": Path(filename).name,
-            "ignorewarnings": "1",
+            "ignorewarnings": "1" if ignore_warnings else "0",
             "comment": comment,
             "text": normalize_text(text),
             "bot": "1",
@@ -466,3 +473,4 @@ class MediaWikiClient:
         result = upload_result.get("result")
         if result not in {"Success", "Warning"}:
             raise MediaWikiError(f"Upload failed for {filename}: {upload_result}")
+        return upload_result

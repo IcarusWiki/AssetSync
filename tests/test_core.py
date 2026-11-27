@@ -82,13 +82,13 @@ def test_pixel_change_is_uploaded_and_retried_until_published():
     assert len(again["uploads"]) == 1
 
 
-def test_new_texture_goes_to_review_and_removed_to_historical():
+def test_new_texture_is_uploaded_and_removed_goes_to_historical():
     other = "Assets/2DArt/UI/Icons/ICON_New"
     ledger = L.Ledger(textures={GUN: synced("p1", "x1")})
     scanned = {other: "q1"}
     changes = L.diff(ledger, scanned)
     plan = L.plan_update(ledger, scanned, changes, {other: "y1"}, build="200", version="V3.0.27.1")
-    assert [r["texture"] for r in plan["review"]] == [other]
+    assert [r["texture"] for r in plan["new"]] == [other] and plan["review"] == []
     assert [h["texture"] for h in plan["historical"]] == [GUN]
     assert ledger.textures[GUN].status == L.REMOVED and ledger.textures[GUN].removed_in == "V3.0.27.1"
     assert plan["uploads"] == []
@@ -306,14 +306,14 @@ def test_recooked_ignored_assets_are_not_exported():
     assert plan["ignored_recooked"] == 1 and plan["uploads"] == []
 
 
-def test_new_asset_without_image_is_ignored_not_reviewed():
+def test_new_asset_without_image_is_ignored_not_uploaded():
     ledger = L.Ledger(textures={GUN: synced("p1", "x1")})
     new_icon = "Assets/2DArt/UI/Icons/ICON_New"
     scanned = {GUN: "p1", MAT: "m1", new_icon: "n1"}
     changes = L.diff(ledger, scanned)
     plan = L.plan_update(ledger, scanned, changes, {new_icon: "y1"}, build="200", version=None,
                          not_textures={MAT})
-    assert [r["texture"] for r in plan["review"]] == [new_icon]
+    assert [r["texture"] for r in plan["new"]] == [new_icon]
     assert plan["not_textures"] == [MAT] and ledger.textures[MAT].status == L.IGNORED
     # Next build re-cooks it: still not exported.
     assert L.diff(ledger, {**scanned, MAT: "m2"}).to_export == []
@@ -377,3 +377,170 @@ def test_finalize_without_processor_output_is_a_no_op(tmp_path, monkeypatch, cap
     cli.main(["finalize", "--partials-dir", str(tmp_path / "partials"), "--build", "200", "--version", "V1"])
     assert "nothing to finalize" in capsys.readouterr().out
     assert not (tmp_path / "queue").exists()
+
+# --- new textures, name clashes, resolve ----------------------------------------------------
+
+FARMER = "Assets/2DArt/UI/Icons/T_Icon_Map_NPC_Farmer"
+FARMER_TWIN = "Assets/2DArt/UI/Icons/MapIcons/T_Icon_Map_NPC_Farmer"
+NEW = "Assets/2DArt/UI/Talents/Companion/T_TALENT_Gorge"
+
+
+def pending(pixels="n1"):
+    return L.TextureRecord(pak_sha1="q1", pixel_sha256=pixels, status=L.REVIEW, first_seen="100")
+
+
+def test_title_key_matches_mediawiki():
+    assert L.title_key("t_Icon_Map NPC_Farmer.png") == L.title_key("T Icon Map_NPC Farmer.png")
+    assert L.title_key("T_ICON_currency_Wolf.png") != L.title_key("T_ICON_CURRENCY_Wolf.png")
+
+
+def test_pending_new_texture_is_planned_again_without_a_pak_change():
+    ledger = L.Ledger(textures={GUN: synced("p1", "x1"), NEW: pending()})
+    assert L.pending_export(ledger) == [NEW]
+    scanned = {GUN: "p1", NEW: "q1"}
+    plan = L.plan_update(ledger, scanned, L.diff(ledger, scanned), {NEW: "n2"}, build="200", version=None)
+    assert [n["texture"] for n in plan["new"]] == [NEW] and plan["new"][0]["pixel_sha256"] == "n2"
+
+
+def test_unpublished_synced_upload_is_exported_again():
+    ledger = L.Ledger(textures={GUN: synced("p1", "x2", wiki="x1")})
+    assert L.pending_export(ledger) == [GUN]
+
+
+def test_new_texture_clashing_with_a_synced_name_goes_to_review():
+    ledger = L.Ledger(textures={FARMER: synced("p1", "x1")})
+    ledger.textures[FARMER].wiki_file = "T_Icon_Map_NPC_Farmer.png"
+    scanned = {FARMER: "p1", FARMER_TWIN: "q1"}
+    plan = L.plan_update(ledger, scanned, L.diff(ledger, scanned), {FARMER_TWIN: "y1"}, build="200", version=None)
+    assert plan["new"] == [] and [r["texture"] for r in plan["review"]] == [FARMER_TWIN]
+    assert FARMER in ledger.textures[FARMER_TWIN].review_reason
+    # Reported once: the next run leaves it parked.
+    again = L.plan_update(ledger, scanned, L.diff(ledger, scanned), {}, build="201", version=None)
+    assert again["review"] == [] and again["new"] == []
+
+
+def test_two_new_textures_with_one_name_both_go_to_review():
+    ledger = L.Ledger()
+    scanned = {FARMER: "p1", FARMER_TWIN: "q1"}
+    plan = L.plan_update(ledger, scanned, L.diff(ledger, scanned), {FARMER: "a", FARMER_TWIN: "b"},
+                         build="200", version=None)
+    assert plan["new"] == [] and sorted(r["texture"] for r in plan["review"]) == [FARMER_TWIN, FARMER]
+
+
+def test_synced_textures_sharing_a_file_are_never_uploaded():
+    ledger = L.Ledger(textures={FARMER: synced("p1", "x2", wiki="x1"), FARMER_TWIN: synced("q1", "y1")})
+    for record in ledger.textures.values():
+        record.wiki_file = "T_Icon_Map_NPC_Farmer.png"
+    scanned = {FARMER: "p1", FARMER_TWIN: "q1"}
+    plan = L.plan_update(ledger, scanned, L.diff(ledger, scanned), {}, build="200", version=None)
+    assert plan["uploads"] == [] and [c["texture"] for c in plan["name_conflicts"]] == [FARMER]
+
+
+def test_ledger_without_review_reason_loads_and_saves_compactly(tmp_path):
+    import json
+
+    (tmp_path / "textures.json").write_text(json.dumps({GUN: {"pak_sha1": "p1", "status": "synced"}}))
+    ledger = L.Ledger.load(tmp_path)
+    assert ledger.textures[GUN].review_reason is None
+    ledger.textures[NEW] = pending()
+    ledger.textures[NEW].review_reason = "name clash"
+    ledger.save(tmp_path)
+    saved = json.loads((tmp_path / "textures.json").read_text(encoding="utf-8"))
+    assert "review_reason" not in saved[GUN] and saved[NEW]["review_reason"] == "name clash"
+
+
+class FakeWiki:
+    def __init__(self, *responses):
+        self.responses = list(responses)
+        self.calls = []
+
+    def upload_file(self, name, data, *, ignore_warnings, comment, text):
+        self.calls.append((name, ignore_warnings))
+        return self.responses.pop(0)
+
+
+def new_batch(tmp_path, ledger):
+    import json
+
+    batch = tmp_path / "queue" / "200"
+    (batch / "png").mkdir(parents=True)
+    (batch / "png" / "x.png").write_bytes(b"png")
+    plan = {"build": "200", "version": "V1", "uploads": [], "historical": [], "review": [],
+            "new": [{"texture": NEW, "wiki_file": "T_TALENT_Gorge.png", "category": "Assets/2DArt/UI/Talents/Companion",
+                     "pixel_sha256": "n1", "png": "png/x.png"}]}
+    (batch / "plan.json").write_text(json.dumps(plan))
+    return batch
+
+
+def test_publish_uploads_new_texture_when_nothing_is_in_the_way(tmp_path):
+    from assetsync import cli
+
+    ledger = L.Ledger(textures={NEW: pending()})
+    wiki = FakeWiki({"result": "Success"})
+    review = []
+    assert cli.publish_batch(new_batch(tmp_path, ledger), ledger, wiki, review) == 0
+    assert wiki.calls == [("T_TALENT_Gorge.png", False)]
+    record = ledger.textures[NEW]
+    assert (record.status, record.wiki_file, record.wiki_pixel_sha256) == (L.SYNCED, "T_TALENT_Gorge.png", "n1")
+    assert review == []
+
+
+def test_publish_parks_new_texture_when_the_wiki_name_is_taken(tmp_path):
+    from assetsync import cli
+
+    ledger = L.Ledger(textures={NEW: pending()})
+    wiki = FakeWiki({"result": "Warning", "warnings": {"exists": "T_TALENT_Gorge.png"}})
+    review = []
+    cli.publish_batch(new_batch(tmp_path, ledger), ledger, wiki, review)
+    record = ledger.textures[NEW]
+    assert record.status == L.REVIEW and "already exists" in record.review_reason
+    assert len(wiki.calls) == 1 and "already exists" in review[0]
+    assert L.pending_export(ledger) == []  # not retried every week
+
+
+def test_publish_duplicate_of_a_game_texture_still_uploads(tmp_path):
+    from assetsync import cli
+
+    ledger = L.Ledger(textures={NEW: pending(), GUN: synced("p1", "x1")})
+    wiki = FakeWiki({"result": "Warning", "warnings": {"duplicate": ["ITEM_Pistol_Handgun.png"]}},
+                    {"result": "Success"})
+    cli.publish_batch(new_batch(tmp_path, ledger), ledger, wiki, [])
+    assert wiki.calls == [("T_TALENT_Gorge.png", False), ("T_TALENT_Gorge.png", True)]
+    assert ledger.textures[NEW].status == L.SYNCED
+
+
+def test_publish_duplicate_of_a_hand_upload_goes_to_review(tmp_path):
+    from assetsync import cli
+
+    ledger = L.Ledger(textures={NEW: pending()})
+    wiki = FakeWiki({"result": "Warning", "warnings": {"duplicate": ["Gorge_talent.png"]}})
+    review = []
+    cli.publish_batch(new_batch(tmp_path, ledger), ledger, wiki, review)
+    assert ledger.textures[NEW].status == L.REVIEW and "Gorge_talent.png" in review[0]
+
+
+def test_resolve(tmp_path, monkeypatch):
+    import pytest
+
+    from assetsync import cli
+
+    monkeypatch.setattr(cli, "REPO_ROOT", tmp_path)
+    twin = pending("y1")
+    twin.review_reason = "name clash"
+    L.Ledger(textures={FARMER: synced("p1", "x1"), FARMER_TWIN: twin, NEW: pending()}).save(tmp_path / "ledger")
+    ledger = L.Ledger.load(tmp_path / "ledger")
+    ledger.textures[FARMER].wiki_file = "T_Icon_Map_NPC_Farmer.png"
+    ledger.save(tmp_path / "ledger")
+
+    with pytest.raises(SystemExit):  # the name belongs to the other texture
+        cli.main(["resolve", FARMER_TWIN, "--upload"])
+    cli.main(["resolve", FARMER_TWIN, "--upload", "--as", "T_Icon_Map_NPC_Farmer_MapIcons.png"])
+    cli.main(["resolve", NEW, "--ignore"])
+    ledger = L.Ledger.load(tmp_path / "ledger")
+    twin = ledger.textures[FARMER_TWIN]
+    assert (twin.status, twin.wiki_file, twin.wiki_pixel_sha256) == (L.SYNCED, "T_Icon_Map_NPC_Farmer_MapIcons.png", None)
+    assert FARMER_TWIN in L.pending_export(ledger)  # exported and uploaded on the next run
+    assert ledger.textures[NEW].status == L.IGNORED
+
+    cli.main(["resolve", FARMER_TWIN, "--adopt", "--as", "T_Icon_Map_NPC_Farmer_MapIcons.png"])
+    assert L.Ledger.load(tmp_path / "ledger").textures[FARMER_TWIN].wiki_pixel_sha256 == "y1"
