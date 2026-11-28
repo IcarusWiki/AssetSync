@@ -9532,7 +9532,7 @@
  "Assets/2DArt/UI/FieldGuide/Widgets/UMG_BestiaryRewards": {
   "first_seen": "25956278",
   "last_changed": "25956278",
-  "pak_sha1": "90ac8152ee08efe3632afb8cf7c2f1ec3303b713",
+  "pak_sha1": "857b5d722654e7fb0a6c4a719c3f15c41ff4f8ed",
   "pixel_sha256": null,
   "removed_in": null,
   "status": "ignored",
@@ -17130,6 +17130,36 @@
   "wiki_file": "Icon_Map_Waypoint.png",
   "wiki_pixel_sha256": "f3a3e58c751f5f4d8c3262ba2a6b0bd1a197003f47cec30aea68b6337dcaa916"
  },
+ "Assets/2DArt/UI/Icons/MapIcons/T_ICON_AnimalTraderNPC": {
+  "first_seen": "26861028",
+  "last_changed": "26861028",
+  "pak_sha1": "cba15e8b2f49d56ece00bfb1bc8daca1d5c1684d",
+  "pixel_sha256": "5bd1d434296c712809b826fc8669ae1afbe8a6f2421bc35f320e359e758445b6",
+  "removed_in": null,
+  "status": "review",
+  "wiki_file": null,
+  "wiki_pixel_sha256": null
+ },
+ "Assets/2DArt/UI/Icons/MapIcons/T_ICON_Bear": {
+  "first_seen": "26861028",
+  "last_changed": "26861028",
+  "pak_sha1": "a94a3ee0b342900187d506b5257a6dadb515e22d",
+  "pixel_sha256": "3da3d563c4318361bc3017cff2244a08e04fc8622d3194d1e22ce50d4cab7c57",
+  "removed_in": null,
+  "status": "review",
+  "wiki_file": null,
+  "wiki_pixel_sha256": null
+ },
+ "Assets/2DArt/UI/Icons/MapIcons/T_ICON_BearCub": {
+  "first_seen": "26861028",
+  "last_changed": "26861028",
+  "pak_sha1": "4286d63fd84d4e98b8bf47eee67943f5cd207523",
+  "pixel_sha256": "a888045a290cbd52662bb29dba4c3fd893d55be344c211dba4618c0fb965b5ee",
+  "removed_in": null,
+  "status": "review",
+  "wiki_file": null,
+  "wiki_pixel_sha256": null
+ },
  "Assets/2DArt/UI/Icons/MapIcons/T_ICON_Kiwi": {
   "first_seen": "25956278",
   "last_changed": "25956278",
@@ -18133,6 +18163,106 @@
   "status": "synced",
   "wiki_file": "Padlock_Symbol.png",
   "wiki_pixel_sha256": "e29c5b708f3e2181e5711e4e1c48b02bcc4b0331afccad8c76a4d91147be33a5"
+ },
+ "Assets/2DArt/UI/Icons/Paint/T_Icon_Paint_Black": {
+  "first_seen": "26861028",
+  "last_changed": "26861028",
+  "pak_sha1": "2e3d802e1a7b8283e28724b78033fc31597ead34",
+  "pixel_sha256": "3bb4dce250213eb68e79f10e4abf29f92ef3faea1d5b3477d48cb20b57488418",
+  "removed_in": null,
+  "status": "review",
+  "wiki_file": null,
+  "wiki_pixel_sha256": null
+ },
+ "Assets/2DArt/UI/Icons/Paint/T_Icon_Paint_Blue": {
+  "first_seen": "26861028",
+  "last_changed": "26861028",
+  "pak_sha1": "ca6e63322a5ff1fb15e4a3e34bf168ba8d2d019d",
+  "pixel_sha256": "b0355f9f5a028d3d90758d664ef02bcf26b15820eb251c772ec14d98912bc663",
+  "removed_in": null,
+  "status": "review",
+  "wiki_file": null,
+  "wiki_pixel_sha256": null
+ },
+ "Assets/2DArt/UI/Icons/Paint/T_Icon_Paint_Brown": {
+  "first_seen": "26861028",
+  "last_changed": "26861028",
+  "pak_sha1": "287a28456d470b1f847950574ef9c10f857f401a",
+  "pixel_sha256": "9a5aed6d87f16d390df4c0e77d1264d80865d585f7be14808b8f5f3a3af62efb",
+  "removed_in": null,
+  "status": "review",
+  "wiki_file": null,
+  "wiki_pixel_sha256": null
+ },
+ "Assets/2DArt/UI/Icons/Paint/T_Icon_Paint_Green": {
+  "first_seen": "26861028",
+  "last_changed": "26861028",
+  "pak_sha1": "21821ef837943bf26861d3af667abeaad1a359d1",
+  "pixel_sha256": "e098f38e548db33f5120cfd6300dc8b0350a6ac1a8f03eb7b7d7686e57e3eb4a",
+  "removed_in": null,
+  "status": "review",
+  "wiki_file": null,
+  "wiki_pixel_sha256": null
+ },
+ "Assets/2DArt/UI/Icons/Paint/T_Icon_Paint_Orange": {
+  "first_seen": "26861028",
+  "last_changed": "26861028",
+  "pak_sha1": "f8a964e605fe93661d1ee60a135dc43c27955651",
+  "pixel_sha256": "ddad7158fe72446b5af8ff23894e677e0d4e2a388fea114cc7c12970f45c5037",
+  "removed_in": null,
+  "status": "review",
+  "wiki_file": null,
+  "wiki_pixel_sha256": null
+ },
+ "Assets/2DArt/UI/Icons/Paint/T_Icon_Paint_Pink": {
+  "first_seen": "26861028",
+  "last_changed": "26861028",
+  "pak_sha1": "fd48eabe923f2e521d9e111a9d381de5c9369a06",
+  "pixel_sha256": "7fdd72538b18b6049f35e8e72a348b55991bc137d4ac97c85a5cffcfee128e64",
+  "removed_in": null,
+  "status": "review",
+  "wiki_file": null,
+  "wiki_pixel_sha256": null
+ },
+ "Assets/2DArt/UI/Icons/Paint/T_Icon_Paint_Purple": {
+  "first_seen": "26861028",
+  "last_changed": "26861028",
+  "pak_sha1": "853ab40970586707085dcc8b8eadc31049293ddd",
+  "pixel_sha256": "731b040fa60c0340aaf42f49c21a6fe22d8504f918ff8ef1c593df647e670fbd",
+  "removed_in": null,
+  "status": "review",
+  "wiki_file": null,
+  "wiki_pixel_sha256": null
+ },
+ "Assets/2DArt/UI/Icons/Paint/T_Icon_Paint_Red": {
+  "first_seen": "26861028",
+  "last_changed": "26861028",
+  "pak_sha1": "588a50246a84b46cac2af65c5a99f783841d5bc7",
+  "pixel_sha256": "e1c44b89b54fdcca3b0d309f712c1a67fb09fa043fc866e4149636773bcd4579",
+  "removed_in": null,
+  "status": "review",
+  "wiki_file": null,
+  "wiki_pixel_sha256": null
+ },
+ "Assets/2DArt/UI/Icons/Paint/T_Icon_Paint_White": {
+  "first_seen": "26861028",
+  "last_changed": "26861028",
+  "pak_sha1": "7f94d957203fb7ab20a022d91aadc7b4bf51b2fa",
+  "pixel_sha256": "048ff607ca78d2130e7b75804b0523b468d268da7cd6f7bddaff4537ee27ef0d",
+  "removed_in": null,
+  "status": "review",
+  "wiki_file": null,
+  "wiki_pixel_sha256": null
+ },
+ "Assets/2DArt/UI/Icons/Paint/T_Icon_Paint_Yellow": {
+  "first_seen": "26861028",
+  "last_changed": "26861028",
+  "pak_sha1": "d93f9a84d749a45ae6c542de0452470904d140d8",
+  "pixel_sha256": "726712dab820a3c48ee6ada97afbad2dc73a26baa868d5c5dcf8869d5bad44a5",
+  "removed_in": null,
+  "status": "review",
+  "wiki_file": null,
+  "wiki_pixel_sha256": null
  },
  "Assets/2DArt/UI/Icons/PlayerRatingThumbsUp": {
   "first_seen": "25956278",
@@ -48974,6 +49104,16 @@
   "wiki_file": "T_ITEM_Horse_Trophy_C.png",
   "wiki_pixel_sha256": "0e5d1414ec332dc4fbe424bb8df12d273a5c05564420c65583d83a427c6351ed"
  },
+ "Assets/2DArt/UI/Items/Item_Icons/Deployables/T_ITEM_Hydrozine_Dehumidifier": {
+  "first_seen": "26861028",
+  "last_changed": "26861028",
+  "pak_sha1": "c1e8cf862ce24a24041ba6a8ee3185f4675305e7",
+  "pixel_sha256": "0fac11abd240f1206a35e194bee80884ec3c0b5d7a9fb5127ee2e1bb5ffe207d",
+  "removed_in": null,
+  "status": "review",
+  "wiki_file": null,
+  "wiki_pixel_sha256": null
+ },
  "Assets/2DArt/UI/Items/Item_Icons/Deployables/T_ITEM_IceMammoth_Trap": {
   "first_seen": "25956278",
   "last_changed": "25956278",
@@ -50733,6 +50873,16 @@
   "status": "synced",
   "wiki_file": "T_ITEM_ResearchEquipment_TestTubes.png",
   "wiki_pixel_sha256": "17d92599f49430d8ee61e37b16dd9635302059e949112fe4a3acd4600eae71d6"
+ },
+ "Assets/2DArt/UI/Items/Item_Icons/Deployables/T_ITEM_Roaster_T4": {
+  "first_seen": "26861028",
+  "last_changed": "26861028",
+  "pak_sha1": "7893edda77c646691a530af76e26064295be992d",
+  "pixel_sha256": "8df78f7a36c351aeba574f3b94a8ba46ade87a208aa63afcdc2ef6211045d3df",
+  "removed_in": null,
+  "status": "review",
+  "wiki_file": null,
+  "wiki_pixel_sha256": null
  },
  "Assets/2DArt/UI/Items/Item_Icons/Deployables/T_ITEM_Roat_Trophy": {
   "first_seen": "25956278",
@@ -61353,6 +61503,26 @@
   "status": "synced",
   "wiki_file": "T_ITEM_Packed_Fur_Brick.png",
   "wiki_pixel_sha256": "84c1baca461e91c68beaa2cd1da67ef7721916565cb553dac8db457ec4a7433e"
+ },
+ "Assets/2DArt/UI/Items/Item_Icons/Resources/T_ITEM_PlantBoss_FlowerExtract": {
+  "first_seen": "26861028",
+  "last_changed": "26861028",
+  "pak_sha1": "b6f59824cbf1612c0b761f944153907ed5f0fbfa",
+  "pixel_sha256": "a5b48a24bd4b589032ed56334e33793dcef0236ba5c5bb251a522113f51eb96f",
+  "removed_in": null,
+  "status": "review",
+  "wiki_file": null,
+  "wiki_pixel_sha256": null
+ },
+ "Assets/2DArt/UI/Items/Item_Icons/Resources/T_ITEM_PlantBoss_ViciousVine": {
+  "first_seen": "26861028",
+  "last_changed": "26861028",
+  "pak_sha1": "9bed429818d6b22fc9ecd6d3b699069b754e3c5e",
+  "pixel_sha256": "e9947b9b67851ac204e60595b8b25c1cfec2360c51d2b10905265436e1d81cf7",
+  "removed_in": null,
+  "status": "review",
+  "wiki_file": null,
+  "wiki_pixel_sha256": null
  },
  "Assets/2DArt/UI/Items/Item_Icons/Resources/T_ITEM_Plastics": {
   "first_seen": "25956278",
